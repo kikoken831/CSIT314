@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bugreporter">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".TriagerCloseReportsActivity"></activity>
+        <activity android:name=".ReviewerReviewBugsActivity" />
+        <activity
+            android:name=".TriagerReportNumByDateActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TriagerReportBestPerfRepActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TriagerReportBestPerfDevActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ReviewerAllBugActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ReviewerDiscussionActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".TriagerReportActivity" />
+        <activity
+            android:name=".TriagerUpdateDuplicateAndInvalidBugActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TriagerAssignBugActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TriagerAllBugActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TriagerDiscussionActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".DeveloperAllBugActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".DeveloperDiscussionActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".DeveloperMyBugsActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ReviewerHomeActivity" />
+        <activity android:name=".TriagerHomeActivity" />
+        <activity android:name=".DeveloperHomeActivity" />
+        <activity android:name=".NavBarActivity" />
+        <activity
+            android:name=".ReporterAllBugActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ReporterDiscussionActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ReporterHomeActivity" />
+        <activity
+            android:name=".ReporterReportFormActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

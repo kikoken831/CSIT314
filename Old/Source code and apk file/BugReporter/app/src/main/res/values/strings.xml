@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Bug Reporter</string>
+    <string name="report_bug">Report Bug</string>
+    <string name="menu">Menu</string>
+    <string name="bug_reporter">Bug Reporter</string>
+    <string name="report_bug_to_us">Report bug to us!</string>
+    <string name="discuss">Discuss</string>
+    <string name="bug">bug</string>
+    <string name="enter_bug_type">Enter Bug Type</string>
+    <string name="enter_short_description_of_the_bug">Enter short description of the bug</string>
+    <string name="submit">Submit</string>
+    <string name="all_bug">All Bugs</string>
+    <string name="no_match_found">No match found.</string>
+    <string name="home">Home</string>
+    <string name="all_bugs">All Bugs</string>
+    <string name="bug_flower">bug_flower</string>
+    <string name="logout">Logout</string>
+    <string name="enter_bug_title">Enter Bug Title</string>
+    <string name="view_bugs">View Bugs</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="My_Bugs">My Bugs</string>
+    <string name="enter_bug_id">Enter Bug ID</string>
+    <string name="enter_comment">Enter Comment</string>
+    <string name="view">View</string>
+    <string name="assign_bug">Assign Bug</string>
+    <string name="invalid_bugs">Invalid Bugs</string>
+    <string name="enter_bug_id_and_developer_s_user_id_to_assign_bug_to_developer">Enter bug id and developer\'s user id to assign bug to developer</string>
+    <string name="assign_bugs">Assign Bugs</string>
+    <string name="enter_developer_s_user_id">Enter developer\'s user id</string>
+    <string name="invalid_or_duplicate_bug_enter_bug_id_below_to_update_status">Invalid or duplicate bug? Enter Bug ID below to update status:</string>
+    <string name="Reports">Reports</string>
+    <string name="report">reports</string>
+    <string name="number_of_reports_by_from_to">Number of Reports By From ___ to ___</string>
+    <string name="best_performed_developer">Best Performed Developer</string>
+    <string name="best_performed_reporter">Best Performed Reporter</string>
+    <string name="number_of_bugs">Number of bugs</string>
+
+</resources>
