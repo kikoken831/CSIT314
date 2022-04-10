@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>50</y>
+      <w>260</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Customer
+--
+custID ID1
+name   
+gender
+emailadd
+
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>80</y>
+      <w>440</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+r1=
+m2=*
+places </panel_attributes>
+    <additional_attributes>10.0;20.0;420.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>40</y>
+      <w>130</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Cart
+--
+orderID ID1
+totalPrice  
+orderStatus
+Qty
+
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>230</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Member
+--
+memberID ID1
+password   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>230</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Guest
+--
+   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>160</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>280</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>FoodType
+--
+name
+desc
+price
+   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>160</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>190</y>
+      <w>30</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>430</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Manager
+--
+   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>430</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Staff
+--
+   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>430</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Owner
+--
+   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>580</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Stats
+--
+   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>580</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Payment
+--
+   
+bg=#dddddd
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
