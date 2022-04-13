@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>50</y>
-      <w>260</w>
-      <h>120</h>
+      <x>261</x>
+      <y>135</y>
+      <w>234</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Customer
 --
@@ -15,6 +15,7 @@ custID ID1
 name   
 gender
 emailadd
+phoneNum
 
 bg=#dddddd
 </panel_attributes>
@@ -23,10 +24,10 @@ bg=#dddddd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>330</x>
-      <y>80</y>
-      <w>440</w>
-      <h>50</h>
+      <x>486</x>
+      <y>162</y>
+      <w>396</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -38,17 +39,19 @@ places </panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>40</y>
-      <w>130</w>
-      <h>170</h>
+      <x>864</x>
+      <y>126</y>
+      <w>117</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>Cart
 --
 orderID ID1
+tableID ID2 
 totalPrice  
 orderStatus
-Qty
+qty
+remarks
 
 bg=#dddddd
 </panel_attributes>
@@ -57,10 +60,10 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>230</y>
-      <w>130</w>
-      <h>120</h>
+      <x>315</x>
+      <y>297</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Member
 --
@@ -73,10 +76,10 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>230</y>
-      <w>130</w>
-      <h>120</h>
+      <x>450</x>
+      <y>297</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Guest
 --
@@ -88,10 +91,10 @@ bg=#dddddd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>160</y>
-      <w>30</w>
-      <h>90</h>
+      <x>369</x>
+      <y>234</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=#dddddd
@@ -101,10 +104,10 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>760</x>
-      <y>280</y>
-      <w>130</w>
-      <h>120</h>
+      <x>873</x>
+      <y>342</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>FoodType
 --
@@ -119,10 +122,10 @@ bg=#dddddd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>160</y>
-      <w>30</w>
-      <h>90</h>
+      <x>459</x>
+      <y>234</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=#dddddd
@@ -132,10 +135,10 @@ bg=#dddddd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>190</y>
-      <w>30</w>
-      <h>110</h>
+      <x>918</x>
+      <y>261</y>
+      <w>27</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=#dddddd
@@ -145,13 +148,14 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>430</y>
-      <w>130</w>
-      <h>120</h>
+      <x>1152</x>
+      <y>351</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Manager
 --
+managerID
    
 bg=#dddddd
 </panel_attributes>
@@ -160,14 +164,15 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>430</y>
-      <w>130</w>
-      <h>120</h>
+      <x>1134</x>
+      <y>153</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Staff
 --
-   
+staffID
+
 bg=#dddddd
 </panel_attributes>
     <additional_attributes/>
@@ -175,10 +180,10 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>430</y>
-      <w>130</w>
-      <h>120</h>
+      <x>126</x>
+      <y>477</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Owner
 --
@@ -190,13 +195,17 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>670</x>
-      <y>580</y>
-      <w>130</w>
-      <h>120</h>
+      <x>693</x>
+      <y>333</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
-    <panel_attributes>Stats
+    <panel_attributes>Payment
 --
+cardType
+cardNum
+promoCode 
+
    
 bg=#dddddd
 </panel_attributes>
@@ -205,16 +214,94 @@ bg=#dddddd
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>470</x>
-      <y>580</y>
-      <w>130</w>
-      <h>120</h>
+      <x>315</x>
+      <y>477</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
-    <panel_attributes>Payment
+    <panel_attributes>Stats
 --
+invNum
+date
+memberID
    
 bg=#dddddd
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>738</x>
+      <y>270</y>
+      <w>144</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+r1=
+m2=*
+makes</panel_attributes>
+    <additional_attributes>10.0;70.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>396</y>
+      <w>45</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+r1=
+m2=*
+has</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>234</x>
+      <y>504</y>
+      <w>99</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+r1=
+m2=*
+views</panel_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>972</x>
+      <y>180</y>
+      <w>180</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+r1=
+m2=*
+changes </panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>972</x>
+      <y>378</y>
+      <w>198</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+r1=
+m2=1
+edits </panel_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
 </diagram>
