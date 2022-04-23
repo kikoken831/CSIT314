@@ -27,6 +27,7 @@
 				// Adds completed time
                 let currentTime = new Date().toLocaleTimeString();
                 document.getElementById(orderID).querySelector(".completedTime").innerHTML = currentTime
+				document.getElementById('modal-completedTime').innerHTML = currentTime
                 document.getElementById(orderID).getElementsByTagName("h5")[2].removeAttribute("hidden")
 			}
 			// On click handler for active orders button
@@ -80,6 +81,7 @@
 				// Opens Modal 
                 $('#btn-completeOrder').show()
                 $('#modal-completedTime').hide()
+				$('#modal-completedTimeTag').hide()
 				$('#exampleModalCenter').modal('show')
 			}
 			// On click handler for completed orders button 
@@ -87,6 +89,7 @@
                 // Hides button 
                 activeOrderModalHandler(orderID)
                 $('#modal-completedTime').show()
+				$('#modal-completedTimeTag').show()
                 $('#btn-completeOrder').hide()
             }
 		</script>
@@ -145,14 +148,20 @@
 				<div class="col-sm-4 pt-4" id="1234">
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">ID: <span class="float-right orderID"> 1234 </span>
+							<h5 class="card-title">ID: 
+								<!-- Order ID -->
+								<span class="float-right orderID">1234</span>
 							</h5>
-							<h5 class="card-title">Time: <span class="float-right orderTime"> 3:25PM </span>
+							<h5 class="card-title">Time: 
+								<!-- Order Time -->
+								<span class="float-right orderTime"> 3:25PM </span>
 							</h5>
                             <h5 class="card-title" hidden>Completed Time: 
                                 <span class="float-right completedTime"></span>
 							</h5>
+							<!-- Order Table Number -->
                             <input class="table" hidden value="2">
+							<!-- Payment Type -->
                             <input class="payment" hidden value="MasterCard">
 							<hr>
 							<p class="card-text">
