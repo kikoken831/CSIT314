@@ -10,6 +10,47 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="custom.css">
+    <style>
+
+    #totalitems {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    
+    }
+    .badge {
+      padding-left: 9px;
+      padding-right: 9px;
+      -webkit-border-radius: 9px;
+      -moz-border-radius: 9px;
+      border-radius: 9px;
+      margin-left: -10px;
+    }
+
+    .label-warning[href],
+    .badge-warning[href] {
+      background-color: #c67605;
+    }
+
+    .container {
+      background-color: #263d6f;
+      width: 25%;
+      height: 60px;
+      border-radius: 20px!important;
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      z-index: 3;
+      padding: 5px;
+      padding-top: 12px;
+      margin: 25px;
+  }
+
+      </style>
     <title>Home</title>
   </head>
   <body>
@@ -36,9 +77,21 @@
 		?>
     <div class="bg-dark p-3">
       <div class="row mx-0 py-3 bg-light rounded-3">
-        <div class="col-sm-8">
-          Order #88 <small class="text-muted">Today, 20 Mar 2023, 02:34PM</small>    
+        <div class="">
+          Order #88 <small class="text-muted"><span id='date-time'></small>    
           <div class="card mb-3 rounded-3">
+          <a href="cart.html" style="width: 25%;">
+            <div class="btn btn-primary container">
+                <div style="width: 50%;float: left;"> 
+                  <i class="fa" style="font-size:30px">&#xf07a;</i>
+                  <span class='badge badge-warning' id='totalitems'> 0 </span>
+                </div>
+                <div style="margin-left: 50%;"> 
+                  <li class="d-flex justify-content-between align-items-center"> <span id="totalcost" class="card-text">$0.00</span></li>
+                </div>
+            </div>
+          </a>
+
             <div class="card-body">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -113,25 +166,6 @@
             </div>
           </div>    
       </div>
-      <div class="col-sm-4">
-          <div class="card rounded-3">
-              <div class="card-body">
-                  <h6 class="d-flex justify-content-between align-items-center"><span>Cart</span><button onclick="orderbasketClear();" class="btn btn-sm btn-danger rounded-pill">Clear</button></h6>
-                  <hr>
-                  <ul id="cartlist" class="list-unstyled" style="height: 50vh; overflow-y:auto;"></ul>
-                  <hr>
-                  <ul class="list-unstyled">
-                      <li class="d-flex justify-content-between align-items-center"><big>Total Items: </big><big id="totalitems" class="card-text fw-bold">0</big></li>
-                      <li class="d-flex justify-content-between align-items-center"><big>Total Amount: </big> <big class="fw-bold">$ <span id="totalcost" class="card-text">0.00</span></big></li>
-                        <li>
-                            <hr>
-                            <button class="btn btn-primary btn-lg w-100 rounded-pill">CHECK OUT</button>
-                        </li>
-                    </ul>
-              </div>
-          </div>
-      </div>
-    </div>
     <script>
         const idarray = [];
         const pricearray = [];
@@ -178,9 +212,9 @@
 
             orderitempricespanleft.appendChild(orderitemname);
             orderitempricespanleft.appendChild(orderitempricespan);
-            orderitem.appendChild(orderitempricespanleft);
-            orderitem.appendChild(deletebutton);
-            orderlist.appendChild(orderitem);
+            // orderitem.appendChild(orderitempricespanleft);
+            // orderitem.appendChild(deletebutton);
+            // orderlist.appendChild(orderitem);
 
 
             itemcount();
@@ -194,9 +228,9 @@
         function totalprice(){
             if(pricearray.length === 0)
             {
-                document.getElementById('totalcost').innerText = "0.00";
+                document.getElementById('totalcost').innerText = "$0.00";
             }else{
-                document.getElementById('totalcost').innerText =  pricearray.reduce(
+                document.getElementById('totalcost').innerText = "$"+pricearray.reduce(
                 sumarray).toFixed(2);
                 function sumarray(total,num){
                     return total+num;
@@ -215,6 +249,9 @@
             let orderlist = document.getElementById('cartlist');
             orderlist.removeChild(button.parentElement);
         }
+
+        var dt = new Date();
+        document.getElementById("date-time").innerHTML=dt.toLocaleString();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
