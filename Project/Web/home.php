@@ -11,7 +11,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="custom.css">
     <style>
 
     #totalitems {
@@ -59,7 +58,7 @@
 			$username="root";
 			$serverpw="";
 			$dbname="CSIT 314";
-			$dbtable="menu";
+			$dbtable="ITEM";
 
 			$conn = new mysqli($servername, $username, $serverpw, $dbname);
 			if ($conn->connect_error) { die("connection failed"); }
@@ -70,7 +69,7 @@
 			{
 				while ($row=$result->fetch_assoc())
 					{
-						$menuArr[] = array('name' => $row["name"], 'price' => $row["price"], 'image' => $row["image"], 'menuCat' => $row["menuCat"] );
+						$menuArr[] = array('item id' => $row["ITEM ID"],'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"], 'imageurl' => $row["IMAGEURL"], 'category' => $row["CATEGORY"] );
 					}
 			}
 			//print_r($menuArr); //test array set
@@ -80,7 +79,7 @@
         <div class="">
           Order #88 <small class="text-muted"><span id='date-time'></small>    
           <div class="card mb-3 rounded-3">
-          <a href="cart.html" style="width: 25%;">
+          <a href="cart.php" style="width: 25%;">
             <div class="btn btn-primary container">
                 <div style="width: 50%;float: left;"> 
                   <i class="fa" style="font-size:30px">&#xf07a;</i>
@@ -111,12 +110,12 @@
                 <div class="row row-cols-1 row-cols-md-4 g-1 card-deck">
 					<?php
 						foreach($menuArr as $key => $value) {
-							if ($value['menuCat'] == 'Entree') {?>
+							if ($value['category'] == 'Entree') {?>
 							<div class="col">
-								<div class="card" onclick="orderbasket('<?php echo $value['name']?>',<?php echo $value['price']?>,'<?php echo $value['image']?>')">
-									<img src="<?php echo $value['image']?>" class="card-img-top" alt="...">
+								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
+									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
-										<h6 class="card-title"><?php echo $value['name']?></h6>
+										<h6 class="card-title"><?php echo $value['item name']?></h6>
 										<h6 class="fw-bold">$<?php echo $value['price']?></h6>
 									</div>
 								</div>
@@ -130,12 +129,12 @@
                 <div class="row row-cols-1 row-cols-md-4 g-1">
                     <?php
 						foreach($menuArr as $key => $value) {
-							if ($value['menuCat'] == 'Meals') {?>
+							if ($value['category'] == 'Meals') {?>
 							<div class="col">
-								<div class="card" onclick="orderbasket('<?php echo $value['name']?>',<?php echo $value['price']?>,'<?php echo $value['image']?>')">
-									<img src="<?php echo $value['image']?>" class="card-img-top" alt="...">
+								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
+									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
-										<h6 class="card-title"><?php echo $value['name']?></h6>
+										<h6 class="card-title"><?php echo $value['item name']?></h6>
 										<h6 class="fw-bold">$<?php echo $value['price']?></h6>
 									</div>
 								</div>
@@ -149,12 +148,12 @@
                 <div class="row row-cols-1 row-cols-md-4 g-1">
                     <?php
 						foreach($menuArr as $key => $value) {
-							if ($value['menuCat'] == 'Drinks') {?>
+							if ($value['category'] == 'Drinks') {?>
 							<div class="col">
-								<div class="card" onclick="orderbasket('<?php echo $value['name']?>',<?php echo $value['price']?>,'<?php echo $value['image']?>')">
-									<img src="<?php echo $value['image']?>" class="card-img-top" alt="...">
+								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
+									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
-										<h6 class="card-title"><?php echo $value['name']?></h6>
+										<h6 class="card-title"><?php echo $value['item name']?></h6>
 										<h6 class="fw-bold">$<?php echo $value['price']?></h6>
 									</div>
 								</div>
