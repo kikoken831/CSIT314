@@ -80,21 +80,21 @@ CREATE TABLE `item` (
 
 INSERT INTO `item` (`ITEM ID`, `ITEM NAME`, `CATEGORY`, `PRICE`, `IMAGEURL`, `VISIBLE`) VALUES
 (0, 'Burger', 'Entree', 12, 'images/beef burger.png', 1),
-(0, 'Carbonara', 'Entree', 11, 'images/carbonara.png', 0),
-(0, 'Chicken Chop', 'Entree', 11.5, 'images/chicken chop.png', 1),
-(0, 'Fish and Chips', 'Entree', 14, 'images/fish and chips.png', 1),
-(0, 'Linguine', 'Entree', 11.5, 'images/Linguine-and-Clams.png', 1),
-(0, 'Pork Chop', 'Entree', 12.5, 'images/pork chop.png', 1),
-(0, 'Pizza', 'Entree', 22, 'images/pepperoni pizza.png', 1),
-(0, 'Cheese Fries', 'Meals', 6, 'images/cheese fries.png', 1),
-(0, 'Salad', 'Meals', 6, 'images/caesar salad.png', 1),
-(0, 'Fries', 'Meals', 4, 'images/garlic-parmesan-french-fries.png', 1),
-(0, 'Wings', 'Meals', 9, 'images/chicken wings.png', 1),
-(0, 'Iced Tea', 'Drinks', 1.5, 'images/Iced-Tea-3-1.png', 1),
-(0, 'Iced Coffee', 'Drinks', 2.5, 'images/iced coffee.png', 1),
-(0, 'Matcha Latte', 'Drinks', 3.5, 'images/matcha latte.png', 1),
-(0, 'Juice', 'Drinks', 2, 'images/orange juice.png', 1),
-(0, 'Spaghetti', 'Entree', 10, 'images/meatball spaghetti.png', 1);
+(1, 'Carbonara', 'Entree', 11, 'images/carbonara.png', 0),
+(2, 'Chicken Chop', 'Entree', 11.5, 'images/chicken chop.png', 1),
+(3, 'Fish and Chips', 'Entree', 14, 'images/fish and chips.png', 1),
+(4, 'Linguine', 'Entree', 11.5, 'images/Linguine-and-Clams.png', 1),
+(5, 'Pork Chop', 'Entree', 12.5, 'images/pork chop.png', 1),
+(6, 'Pizza', 'Entree', 22, 'images/pepperoni pizza.png', 1),
+(7, 'Cheese Fries', 'Meals', 6, 'images/cheese fries.png', 1),
+(8, 'Salad', 'Meals', 6, 'images/caesar salad.png', 1),
+(9, 'Fries', 'Meals', 4, 'images/garlic-parmesan-french-fries.png', 1),
+(10, 'Wings', 'Meals', 9, 'images/chicken wings.png', 1),
+(11, 'Iced Tea', 'Drinks', 1.5, 'images/Iced-Tea-3-1.png', 1),
+(12, 'Iced Coffee', 'Drinks', 2.5, 'images/iced coffee.png', 1),
+(13, 'Matcha Latte', 'Drinks', 3.5, 'images/matcha latte.png', 1),
+(14, 'Juice', 'Drinks', 2, 'images/orange juice.png', 1),
+(15, 'Spaghetti', 'Entree', 10, 'images/meatball spaghetti.png', 1);
 
 -- --------------------------------------------------------
 
