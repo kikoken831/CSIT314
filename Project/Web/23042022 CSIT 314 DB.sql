@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `cart item`
 --
 
-CREATE TABLE `cart item` (
+CREATE TABLE IF NOT EXISTS `cart item` (
   `TRANSACTION ID` int(50) NOT NULL,
   `ITEM ID` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `cart item` (
 -- Table structure for table `coupon`
 --
 
-CREATE TABLE `coupon` (
+CREATE TABLE IF NOT EXISTS `coupon` (
   `COUPON ID` varchar(50) NOT NULL,
   `MANAGER ID` int(50) NOT NULL,
   `DISCOUNT RATE` double NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `coupon` (
 -- Table structure for table `customer`
 --
 
-CREATE TABLE `customer` (
+CREATE TABLE IF NOT EXISTS `customer` (
   `CUSTOMER ID` int(50) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
   `PASSWORD` varchar(50) NOT NULL,
@@ -59,24 +59,24 @@ CREATE TABLE `customer` (
   `FAVOURITE LIST` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO 'customer' ('CUSTOMER ID', 'EMAIL', 'PASSWORD', 'CUSTOMER NAME', 'FAVOURITE LIST') VALUES
-(0,'rockalltrafalgar@gmail.com','1qazxsw2','1,2,3'),
-(1,'ravioliconclusion@gmail.com','1qazxsw2','4,5,6'),
-(2,'nutterhunt@gmail.com','1qazxsw2','5,8'),
-(3,'magicianmountain@gmail.com','1qazxsw2','2'),
-(4,'lakessplosh@gmail.com','1qazxsw2','8,9,10'),
-(5,'priorityabsorbing@gmail.com','1qazxsw2','0,2,4'),
-(6,'mutesee@gmail.com','1qazxsw2','1,2'),
-(7,'groupplatform@gmail.com','1qazxsw2','9,6,5'),
-(8,'apparentlysaid@gmail.com','1qazxsw2','1,3,5'),
-(9,'liquoriceprojector@gmail.com','1qazxsw2','2,4,9');
+INSERT INTO `customer` (`CUSTOMER ID`, `EMAIL`, `PASSWORD`, `CUSTOMER NAME`, `FAVOURITE LIST`) VALUES
+(0,'rockalltrafalgar@gmail.com','1qazxsw2','rockalltrafalgar','1,2,3'),
+(1,'ravioliconclusion@gmail.com','1qazxsw2','ravioliconclusion','4,5,6'),
+(2,'nutterhunt@gmail.com','1qazxsw2','nutterhunt','5,8'),
+(3,'magicianmountain@gmail.com','1qazxsw2','magicianmountain','2'),
+(4,'lakessplosh@gmail.com','1qazxsw2','lakessplosh','8,9,10'),
+(5,'priorityabsorbing@gmail.com','1qazxsw2','priorityabsorbing','0,2,4'),
+(6,'mutesee@gmail.com','1qazxsw2','mutesee','1,2'),
+(7,'groupplatform@gmail.com','1qazxsw2','groupplatform','9,6,5'),
+(8,'apparentlysaid@gmail.com','1qazxsw2','apparentlysaid','1,3,5'),
+(9,'liquoriceprojector@gmail.com','1qazxsw2','liquoriceprojector','2,4,9');
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `item`
 --
 
-CREATE TABLE `item` (
+CREATE TABLE IF NOT EXISTS `item` (
   `ITEM ID` int(50) NOT NULL,
   `ITEM NAME` varchar(50) NOT NULL,
   `CATEGORY` varchar(10) DEFAULT NULL,
@@ -112,13 +112,13 @@ INSERT INTO `item` (`ITEM ID`, `ITEM NAME`, `CATEGORY`, `PRICE`, `IMAGEURL`, `VI
 -- Table structure for table `manager`
 --
 
-CREATE TABLE `manager` (
+CREATE TABLE IF NOT EXISTS `manager` (
   `MANAGER ID` int(20) NOT NULL,
   `USERNAME` varchar(20) NOT NULL,
   `PASSWORD` varchar(20) NOT NULL,
   `NAME` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO 'owner' ('OWNER ID', 'USERNAME', 'PASSWORD') VALUES
+INSERT INTO `manager` (`MANAGER ID`, `USERNAME`, `PASSWORD`) VALUES
 (0,'joesepthmama1','password123');
 -- --------------------------------------------------------
 
@@ -126,25 +126,25 @@ INSERT INTO 'owner' ('OWNER ID', 'USERNAME', 'PASSWORD') VALUES
 -- Table structure for table `owner`
 --
 
-CREATE TABLE `owner` (
+CREATE TABLE IF NOT EXISTS `owner` (
   `OWNER ID` int(50) NOT NULL,
   `USERNAME` varchar(50) NOT NULL,
   `PASSWORD` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-INSERT INTO 'owner' ('OWNER ID', 'USERNAME', 'PASSWORD') VALUES
+INSERT INTO `owner` (`OWNER ID`, `USERNAME`, `PASSWORD`) VALUES
 (0,'joemama','password123');
 --
 -- Table structure for table `staff`
 --
 
-CREATE TABLE `staff` (
+CREATE TABLE IF NOT EXISTS `staff` (
   `STAFF ID` int(50) NOT NULL,
   `USERNAME` varchar(50) NOT NULL,
   `PASSWORD` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO `staff` ('STAFF ID','USERNAME','PASSWORD') VALUES
+INSERT INTO `staff` (`STAFF ID`,`USERNAME`,`PASSWORD`) VALUES
 (0,'shampooimpetuous','1qazxsw2'),
 (1,'xebecshelter','1qazxsw2'),
 (2,'fishstarbolins','1qazxsw2'),
@@ -160,7 +160,7 @@ INSERT INTO `staff` ('STAFF ID','USERNAME','PASSWORD') VALUES
 -- Table structure for table `transaction`
 --
 
-CREATE TABLE `transaction` (
+CREATE TABLE IF NOT EXISTS `transaction` (
   `TRANSACTION ID` int(50) NOT NULL,
   `TABLE ID` int(50) NOT NULL,
   `CUSTOMER ID` int(50) NOT NULL,
