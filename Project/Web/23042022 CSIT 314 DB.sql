@@ -60,16 +60,16 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO 'customer' ('CUSTOMER ID', 'EMAIL', 'PASSWORD', 'CUSTOMER NAME', 'FAVOURITE LIST') VALUES
-(0,'rockalltrafalgar','1qazxsw2'),
-(1,'ravioliconclusion','1qazxsw2'),
-(2,'nutterhunt','1qazxsw2'),
-(3,'magicianmountain','1qazxsw2'),
-(4,'lakessplosh','1qazxsw2'),
-(5,'priorityabsorbing','1qazxsw2'),
-(6,'mutesee','1qazxsw2'),
-(7,'groupplatform','1qazxsw2'),
-(8,'apparentlysaid','1qazxsw2'),
-(9,'liquoriceprojector','1qazxsw2');
+(0,'rockalltrafalgar@gmail.com','1qazxsw2','1,2,3'),
+(1,'ravioliconclusion@gmail.com','1qazxsw2','4,5,6'),
+(2,'nutterhunt@gmail.com','1qazxsw2','5,8'),
+(3,'magicianmountain@gmail.com','1qazxsw2','2'),
+(4,'lakessplosh@gmail.com','1qazxsw2','8,9,10'),
+(5,'priorityabsorbing@gmail.com','1qazxsw2','0,2,4'),
+(6,'mutesee@gmail.com','1qazxsw2','1,2'),
+(7,'groupplatform@gmail.com','1qazxsw2','9,6,5'),
+(8,'apparentlysaid@gmail.com','1qazxsw2','1,3,5'),
+(9,'liquoriceprojector@gmail.com','1qazxsw2','2,4,9');
 -- --------------------------------------------------------
 
 --
