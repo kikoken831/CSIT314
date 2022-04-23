@@ -59,6 +59,17 @@ CREATE TABLE `customer` (
   `FAVOURITE LIST` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO 'customer' ('CUSTOMER ID', 'EMAIL', 'PASSWORD', 'CUSTOMER NAME', 'FAVOURITE LIST') VALUES
+(0,'rockalltrafalgar','1qazxsw2'),
+(1,'ravioliconclusion','1qazxsw2'),
+(2,'nutterhunt','1qazxsw2'),
+(3,'magicianmountain','1qazxsw2'),
+(4,'lakessplosh','1qazxsw2'),
+(5,'priorityabsorbing','1qazxsw2'),
+(6,'mutesee','1qazxsw2'),
+(7,'groupplatform','1qazxsw2'),
+(8,'apparentlysaid','1qazxsw2'),
+(9,'liquoriceprojector','1qazxsw2');
 -- --------------------------------------------------------
 
 --
@@ -73,7 +84,6 @@ CREATE TABLE `item` (
   `IMAGEURL` varchar(100) NOT NULL,
   `VISIBLE` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Dumping data for table `item`
 --
@@ -108,7 +118,8 @@ CREATE TABLE `manager` (
   `PASSWORD` varchar(20) NOT NULL,
   `NAME` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+INSERT INTO 'owner' ('OWNER ID', 'USERNAME', 'PASSWORD') VALUES
+(0,'joesepthmama1','password123');
 -- --------------------------------------------------------
 
 --
@@ -122,7 +133,8 @@ CREATE TABLE `owner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-
+INSERT INTO 'owner' ('OWNER ID', 'USERNAME', 'PASSWORD') VALUES
+(0,'joemama','password123');
 --
 -- Table structure for table `staff`
 --
@@ -132,9 +144,18 @@ CREATE TABLE `staff` (
   `USERNAME` varchar(50) NOT NULL,
   `PASSWORD` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+INSERT INTO `staff` ('STAFF ID','USERNAME','PASSWORD') VALUES
+(0,'shampooimpetuous','1qazxsw2'),
+(1,'xebecshelter','1qazxsw2'),
+(2,'fishstarbolins','1qazxsw2'),
+(3,'millwrighttherapist','1qazxsw2'),
+(4,'tophatinflation','1qazxsw2'),
+(5,'preservecodger','1qazxsw2'),
+(6,'teenagerseason','1qazxsw2'),
+(7,'taekwondomoo','1qazxsw2'),
+(8,'capitalistcool','1qazxsw2'),
+(9,'reputationexecutive','1qazxsw2');
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `transaction`
 --
