@@ -21,37 +21,40 @@ SET time_zone = "+00:00";
 -- Database: `csit 314`
 --
 
--- --------------------------------------------------------
 
---
--- Table structure for table `cart item`
---
-
-CREATE TABLE IF NOT EXISTS `cart item` (
-  `TRANSACTION ID` int(50) NOT NULL,
-  `ITEM ID` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `coupon`
 --
+DROP database if exists `restaurant`;
+create database `restaurant`;
+use `restaurant`;
 
-CREATE TABLE IF NOT EXISTS `coupon` (
+drop table if exists `coupon`;
+CREATE TABLE `coupon` (
   `COUPON ID` varchar(50) NOT NULL,
+  `COUPON CODE` varchar(50) NOT NULL,
   `MANAGER ID` int(50) NOT NULL,
   `DISCOUNT RATE` double NOT NULL,
   `VALID` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+INSERT INTO `coupon` (`COUPON ID`,`MANAGER ID`,`COUPON CODE`,`DISCOUNT RATE`,`VALID`) VALUES
+-- --------------------------------------------------------
+(0,0,'ONEONESALE',20,1),
+(1,0,'TWOTWOSALE',10,1),
+(2,0,'THREETHREESALE',15,1),
+(3,0,'FOURFOURSALE',8,0),
+(4,0,'FIVEFIVESALE',10,0),
+(5,0,'SIXSIXSALE',16,0);
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `customer`
 --
-
-CREATE TABLE IF NOT EXISTS `customer` (
+drop table if exists `customer`;
+CREATE TABLE `customer` (
   `CUSTOMER ID` int(50) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
   `PASSWORD` varchar(50) NOT NULL,
@@ -75,7 +78,7 @@ INSERT INTO `customer` (`CUSTOMER ID`, `EMAIL`, `PASSWORD`, `CUSTOMER NAME`, `FA
 --
 -- Table structure for table `item`
 --
-
+Drop table if exists `item`;
 CREATE TABLE IF NOT EXISTS `item` (
   `ITEM ID` int(50) NOT NULL,
   `ITEM NAME` varchar(50) NOT NULL,
@@ -111,65 +114,137 @@ INSERT INTO `item` (`ITEM ID`, `ITEM NAME`, `CATEGORY`, `PRICE`, `IMAGEURL`, `VI
 --
 -- Table structure for table `manager`
 --
-
+DROP table if exists `manager`;
 CREATE TABLE IF NOT EXISTS `manager` (
   `MANAGER ID` int(20) NOT NULL,
   `USERNAME` varchar(20) NOT NULL,
   `PASSWORD` varchar(20) NOT NULL,
   `NAME` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO `manager` (`MANAGER ID`, `USERNAME`, `PASSWORD`) VALUES
-(0,'joesepthmama1','password123');
+INSERT INTO `manager` (`MANAGER ID`, `USERNAME`, `PASSWORD`, `NAME`) VALUES
+(0,'joesepthmama1','password123','Joesepth');
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `owner`
 --
-
+DROP table if exists `owner`;
 CREATE TABLE IF NOT EXISTS `owner` (
   `OWNER ID` int(50) NOT NULL,
   `USERNAME` varchar(50) NOT NULL,
-  `PASSWORD` varchar(50) NOT NULL
+  `PASSWORD` varchar(50) NOT NULL,
+  `NAME` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-INSERT INTO `owner` (`OWNER ID`, `USERNAME`, `PASSWORD`) VALUES
-(0,'joemama','password123');
+INSERT INTO `owner` (`OWNER ID`, `USERNAME`, `PASSWORD`, `NAME`) VALUES
+(0,'joemama','password123','Joe');
 --
 -- Table structure for table `staff`
 --
-
+Drop table if exists `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
   `STAFF ID` int(50) NOT NULL,
   `USERNAME` varchar(50) NOT NULL,
-  `PASSWORD` varchar(50) NOT NULL
+  `PASSWORD` varchar(50) NOT NULL,
+  `NAME` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO `staff` (`STAFF ID`,`USERNAME`,`PASSWORD`) VALUES
-(0,'shampooimpetuous','1qazxsw2'),
-(1,'xebecshelter','1qazxsw2'),
-(2,'fishstarbolins','1qazxsw2'),
-(3,'millwrighttherapist','1qazxsw2'),
-(4,'tophatinflation','1qazxsw2'),
-(5,'preservecodger','1qazxsw2'),
-(6,'teenagerseason','1qazxsw2'),
-(7,'taekwondomoo','1qazxsw2'),
-(8,'capitalistcool','1qazxsw2'),
-(9,'reputationexecutive','1qazxsw2');
+INSERT INTO `staff` (`STAFF ID`,`USERNAME`,`PASSWORD`,`NAME`) VALUES
+(0,'shampooimpetuous','1qazxsw2','shampoo'),
+(1,'xebecshelter','1qazxsw2','xebec'),
+(2,'fishstarbolins','1qazxsw2','fishstar'),
+(3,'millwrighttherapist','1qazxsw2','mill'),
+(4,'tophatinflation','1qazxsw2','tophat'),
+(5,'preservecodger','1qazxsw2','preserve'),
+(6,'teenagerseason','1qazxsw2','teenage'),
+(7,'taekwondomoo','1qazxsw2','tae'),
+(8,'capitalistcool','1qazxsw2','capt'),
+(9,'reputationexecutive','1qazxsw2','executive');
 -- --------------------------------------------------------
 --
 -- Table structure for table `transaction`
 --
-
+Drop table if exists `transaction`;
 CREATE TABLE IF NOT EXISTS `transaction` (
   `TRANSACTION ID` int(50) NOT NULL,
   `TABLE ID` int(50) NOT NULL,
   `CUSTOMER ID` int(50) NOT NULL,
-  `COUPON ID` int(50) NOT NULL,
+  `COUPON ID` int(50) NULL,
   `STAFF ID` int(50) NOT NULL,
   `STATUS` varchar(50) NOT NULL,
   `DATETIME` date NOT NULL,
   `TOTAL PRICE` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `transaction` (`TRANSACTION ID`, `TABLE ID`, `CUSTOMER ID`, `COUPON ID`,
+ `STAFF ID`, `STATUS`, `DATETIME`, `TOTAL PRICE`) VALUES 
+ 
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123'),
+ ('0', '1', '0', '0', '0', 'PENDING', '2022-04-24', '123');
+--
+-- Table structure for table `cart item`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart item`
+--
+Drop table if exists `cart item`;
+CREATE TABLE IF NOT EXISTS `cart item` (
+  `TRANSACTION ID` int(50) NOT NULL,
+  `ITEM ID` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- --------------------------------------------------------
+Drop table if exists `table`;
+CREATE TABLE `tables`(
+  `TABLES ID` int(50) NOT NULL,
+  `CAPACITY` int(50) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `tables` (`TABLES ID`,`CAPACITY`) VALUES
+(1,4),
+(2,4),
+(3,4),
+(4,4),
+(5,8),
+(6,8),
+(7,8),
+(8,8),
+(9,2),
+(10,2),
+(11,2),
+(12,2),
+(13,6),
+(14,6),
+(15,6),
+(16,6),
+(17,10),
+(18,10),
+(19,10),
+(20,10);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
