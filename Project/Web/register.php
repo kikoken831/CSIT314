@@ -412,7 +412,7 @@ $(document).ready(function() {
 				</div>
 				<div class="fieldgroup">
 					<p>
-						Already registered? <a href="loginpage.php"></br>Sign in</a>
+						Already registered? <a href="login.php"></br>Sign in</a>
 					</p>
 				</div>
 			</form>
