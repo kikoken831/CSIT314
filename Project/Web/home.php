@@ -10,6 +10,10 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <!-- Bootstrap CSS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
 
@@ -78,8 +82,8 @@
       <div class="row mx-0 py-3 bg-light rounded-3">
         <div class="">
           Order #88 <small class="text-muted"><span id='date-time'></small>    
-          <div class="card mb-3 rounded-3">
-          <a href="cart.php" style="width: 25%;">
+          <div class="card mb-3 rounded-3" onclick="activeCartModalHandler()">
+          <!-- <a href="cart.php" style="width: 25%;"> -->
             <div class="btn btn-primary container">
                 <div style="width: 50%;float: left;"> 
                   <i class="fa" style="font-size:30px">&#xf07a;</i>
@@ -165,6 +169,37 @@
             </div>
           </div>    
       </div>
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h6 class="modal-title"> Cart Details </h6>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+          <div class="card-body">
+                  <h6 class="d-flex justify-content-between align-items-center"><span>Cart</span><button onclick="orderbasketClear();" class="btn btn-sm btn-danger rounded-pill">Clear</button></h6>
+                  <hr>
+                  <ul id="cartlist" class="list-unstyled" style="height: 50vh; overflow-y:auto;"></ul>
+                  <hr>
+                  <ul class="list-unstyled">
+                      <li class="d-flex justify-content-between align-items-center"><big>Total Items: </big><big id="totalcartitems" class="card-text fw-bold">0</big></li>
+                      <li class="d-flex justify-content-between align-items-center"><big>Total Amount: </big> <big class="fw-bold"><span id="totalcartcost" class="card-text">0.00</span></big></li>
+                        <li>
+                            <hr>
+                            <button id="btn-checkout" type="button" onclick="checkOut()" class="btn btn-lg btn-success mr-auto ml-auto">Check Out</button>
+                            <!-- <button class="btn btn-primary btn-lg w-100 rounded-pill" onclick="checkOut()">Check Out</button> -->
+                        </li>
+                    </ul>
+              </div>
+					<div class="modal-footer text-center">
+						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+						
+					</div>
+				</div>
+			</div>
+		</div>
     <script>
         const idarray = [];
         const pricearray = [];
@@ -211,9 +246,9 @@
 
             orderitempricespanleft.appendChild(orderitemname);
             orderitempricespanleft.appendChild(orderitempricespan);
-            // orderitem.appendChild(orderitempricespanleft);
-            // orderitem.appendChild(deletebutton);
-            // orderlist.appendChild(orderitem);
+            orderitem.appendChild(orderitempricespanleft);
+            orderitem.appendChild(deletebutton);
+            orderlist.appendChild(orderitem);
 
 
             itemcount();
@@ -222,14 +257,18 @@
         };
         function itemcount(){
             document.getElementById('totalitems').innerText =  itemarray.length;
+            document.getElementById('totalcartitems').innerText =  itemarray.length;
 
         }
         function totalprice(){
             if(pricearray.length === 0)
             {
                 document.getElementById('totalcost').innerText = "$0.00";
+                document.getElementById('totalcartcost').innerText = "$0.00";
             }else{
                 document.getElementById('totalcost').innerText = "$"+pricearray.reduce(
+                sumarray).toFixed(2);
+                document.getElementById('totalcartcost').innerText = "$"+pricearray.reduce(
                 sumarray).toFixed(2);
                 function sumarray(total,num){
                     return total+num;
@@ -248,10 +287,19 @@
             let orderlist = document.getElementById('cartlist');
             orderlist.removeChild(button.parentElement);
         }
+        function activeCartModalHandler()
+        {
+          $('#exampleModalCenter').modal('show');
+        }
+        
 
         var dt = new Date();
         document.getElementById("date-time").innerHTML=dt.toLocaleString();
     </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
