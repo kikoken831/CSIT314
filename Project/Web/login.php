@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Customer Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -23,7 +27,7 @@
 
       .card {
         border: none;
-        height: 320px;
+        height: 450px;
       }
 
       .forms-inputs {
@@ -63,82 +67,222 @@
       .bxs-badge-check {
         font-size: 90px;
       }
+
+      #register-form {
+	
+      width:300px;
+        margin-top: 10px;
+        margin-right: auto;
+        margin-bottom: 10px;
+        margin-left: auto;
+    }
+
+    #register-form .fieldgroup {
+      display: inline-block;
+      padding: 8px 10px;
+      width: 300px;
+    }
+
+    #register-form .fieldgroup label {
+      float: left;
+      padding: 1px 0 0;
+      text-align: right;
+      width: 100px;
+    }
+
+    #register-form .fieldgroup input {
+      width: 160px;
+    }
+
+    #register-form .fieldgroup input,#register-form .fieldgroup textarea,#register-form .fieldgroup select
+      {
+      height: 28px;
+    }
+
+    #register-form input[type="submit"] {
+      font-size: 1em;
+      font-weight: 600;
+      color: #fff;
+      width: 27%;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      margin: 1em 0em 0em 0em;
+      background: #34495e;
+      cursor: pointer;
+    }
+
+    #register-form .fieldgroup span {
+      padding-left: 110px;
+      text-align: left;
+      font-size: 12px;
+      width: 300px;
+      padding-top: 0px;
+      float: left;
+    }
+
+    #register-form .fieldgroup input, #register-form .fieldgroup textarea, #register-form .fieldgroup select
+    {
+      width: 170px;
+    }
+
+    #register-form .fieldgroup span img {
+      padding-right: 75px;
+      width: 185px !important;
+      height: 30px !important;
+      padding-top: 0px;
+      float: left;
+      
+    }
     </style>
   </head>
   <body oncontextmenu="return false" class="snippet-body">
 	<?php
 		$servername="localhost";
-		$username="root";
-		$serverpw="";
-		$dbname="CSIT 314";
-		$dbtable="CUSTOMER";
+    $username="root";
+    $serverpw="";
+    $dbname="restaurant";
+    $dbtable="customer";
 
 		$conn = new mysqli($servername, $username, $serverpw, $dbname);
 		if ($conn->connect_error) { die("connection failed"); }
 
-		$sql = "select * from $dbtable";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) 
-		{
-			while ($row=$result->fetch_assoc())
-				{
-					$menuArr[] = array('item id' => $row["ITEM ID"],'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"], 'imageurl' => $row["IMAGEURL"], 'category' => $row["CATEGORY"] );
-				}
-		}
-		//print_r($menuArr); //test array set
+
 	?>
     <div class="container mt-5">
       <div class="row d-flex justify-content-center">
-        <div class="col-md-6">
-          <h6 style="text-align:center">Welcome to Makan Club Restaurant POS system!</h6>
-          <div class="card px-5 py-5" id="form1">
-            <div class="form-data" v-if="!submitted">
-              <div class="forms-inputs mb-4">
-                <span>Email or username</span>
-                <input
-                  autocomplete="off"
-                  type="text"
-                  v-model="email"
-                  v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
-                  v-on:blur="emailBlured = true"
-                />
-                <div class="invalid-feedback">A valid email is required!</div>
-              </div>
-              <div class="forms-inputs mb-4">
-                <span>Password</span>
-                <input
-                  autocomplete="off"
-                  type="password"
-                  v-model="password"
-                  v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
-                  v-on:blur="passwordBlured = true"
-                />
-                <div class="invalid-feedback">
-                  Password must be 8 character!
-                </div>
-              </div>
-              <div class="mb-3">
-                <button
-                  v-on:click.stop.prevent="submit"
-                  class="btn btn-dark w-100"
-                >
-                  Login
-                </button>
-              </div>
-            </div>
-            <div class="success-data" v-else>
-              <div class="text-center d-flex flex-column">
-                <i class="bx bxs-badge-check"></i>
-                <span class="text-center fs-1"
-                  >You have been logged in <br />
-                  Successfully</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div class="banner">
+	<div class="container">
+  <h6 style="text-align:center">Welcome to Makan Club Restaurant POS system!</h6>
+		<div class="banner-main">
+				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="register-form" autocomplete="off" align="center" onsubmit="return validateRegistrationForm()">
+				
+
+				<div id="form-content">
+					<fieldset>
+
+						<div class="fieldgroup">
+							<label for="email">Email : </label><input name="email" type="text"
+								id="email" maxlength="50" required>
+						</div>
+
+						<div class="fieldgroup">
+							<label for="password">Password : </label><input name="password"
+								type="password" id="password" required>
+						</div>
+
+						<div class="fieldgroup">
+							<div class="loginbutton">
+								<input type="submit" value="Login" class="submit"
+									name="login" id="loginbutton" align="center">
+							</div>
+						</div>
+
+					</fieldset>
+          <?php
+          include ("function.php");
+
+						if ( isset ($_POST["login"])) //check if login button is clicked
+						{
+							function test_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+              }
+              
+              $email = test_input($_POST["email"]);
+              $password = test_input($_POST["password"]);
+
+
+							if(!empty($email) && !empty($password)) //check if input is empty
+							{
+									if (check_email($email))
+									{
+										if (check_password($password))
+										{
+                      $query = $conn->prepare("select password from customer WHERE email = ?");
+                      $query->bind_param('s', $email);
+                      $query->execute();
+                      $query->bind_result($verifypassword);
+                      $query->fetch(); //fetch query
+                      $query->close(); //close query
+
+                      $decryptytext = str_decryptaesgcm($verifypassword, $password, "base64");
+											if ($decryptytext == "makanClub2022pw") //check if both matches
+											{
+                        ?>
+                        <script type="text/javascript">
+                        alert("Successfully logged in. Redirecting to MakanClub menu page");
+                        window.location.href = "home.php";
+                        </script>
+                      <?php
+											}
+                      else
+                      {
+                        ?>
+													<script type="text/javascript">
+													alert("Invalid email or password");
+													window.location.href = "login.php"; 
+													</script>
+												<?php
+                      }
+										}
+										else
+										{
+												?>
+													<script type="text/javascript">
+													alert("Invalid email or password");
+													window.location.href = "login.php"; 
+													</script>
+												<?php
+										}
+									}
+									else
+									{
+											?>
+											<script type="text/javascript">
+                      alert("Invalid email or password");
+                      window.location.href = "login.php";
+                      </script>
+											<?php
+									}
+								}
+								else
+								{
+									?>
+										<script type="text/javascript">
+										alert("Invalid email or password");
+										window.location.href = "login.php";
+										</script>
+									<?php
+								}
+							}
+            
+						?>
+
+
+				</div>
+				<div class="fieldgroup">
+					<p>
+            <a href="forgotpassword.php"></br>Forget Password</a>
+						<a href="register.php"></br>Not registered? Click here to register</a>
+					</p>
+				</div>
+			</form>
+      <script>
+      function validateRegistrationForm(){
+          var result = false;
+          if (($('#fullname') != "") && (passwordCheck == true) &&
+              (retypePasswordCheck == true)) {
+                  result = true;
+          }
+          return result;
+      }
+      </script>
+      
+		</div>
+	</div>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"

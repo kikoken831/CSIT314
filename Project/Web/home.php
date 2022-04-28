@@ -57,7 +57,7 @@
 			$servername="localhost";
 			$username="root";
 			$serverpw="";
-			$dbname="CSIT 314";
+			$dbname="restaurant";
 			$dbtable="ITEM";
 
 			$conn = new mysqli($servername, $username, $serverpw, $dbname);
