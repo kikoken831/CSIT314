@@ -9,6 +9,16 @@
 		<title>Manage Orders</title>
 	</head>
 	<body>
+	<?php
+	//db connection initialise
+	$servername="localhost";
+	$username="root";
+	$serverpw="";
+	$dbname="restaurant";
+
+	$conn = new mysqli($servername, $username, $serverpw, $dbname);
+	if ($conn->connect_error) { die("connection failed"); }
+	?>
 		<script type="text/javascript">
 			function completeOrder(orderID) {
 				$('#exampleModalCenter').modal('hide');
@@ -29,6 +39,15 @@
                 document.getElementById(orderID).querySelector(".completedTime").innerHTML = currentTime
 				document.getElementById('modal-completedTime').innerHTML = currentTime
                 document.getElementById(orderID).getElementsByTagName("h5")[2].removeAttribute("hidden")
+				document.getElementById("cID").value = orderID;
+					<?php
+					if(isset($_POST['cID']))
+					{
+						$temp = $_POST['cID'];
+						$sql = "update transaction set status = 'COMPLETED' where `transaction id` = $temp";
+						$conn->query($sql);
+					}
+					?>
 			}
 			// On click handler for active orders button
 			function activeOrderModalHandler(orderID) {
@@ -96,111 +115,194 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<span class="navbar-brand mb-0 h1">Makan Club Manage Orders</span>
-				<button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button> <!-- should we terminate session? -->
+				<a href = "manageOrders.php?menu=active" style="padding:10px; border-radius: 10px; background-color:black; color:white; text-decoration:none; margin: 5px;">Active Orders</a>
+				<a href = "manageOrders.php?menu=complete" style="padding:10px; border-radius: 10px; background-color:black; color:white; text-decoration:none; margin: 5px;">Completed Orders</a>
+				<button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button>
 			</div>
 		</nav>
 		<!-- Main Body -->
 		<div class="container">
 			<h1 class="text-center">Manage Orders Page</h1>
 			<hr>
-			<!-- Active Orders List -->
-			<div class="text-center">
-				<hr class="d-inline-block w-25">
-				<h1 class="d-inline-block">Active orders</h1>
-				<hr class="d-inline-block w-25">
-        </div>
-			<div id="activeOrdersContainer" class="row">
-				<?php //db pulls
-					$servername="localhost";
-					$username="root";
-					$serverpw="";
-					$dbname="restaurant";
+		<?php
+		//set to default page 'active' for async render
+		if(!isset($_GET['menu']))
+		$_GET['menu'] = 'active';
 
-					$conn = new mysqli($servername, $username, $serverpw, $dbname);
-					if ($conn->connect_error) { die("connection failed"); }
-
-					$sql = "select * from transaction"; //need to cast today's date into query for filter
-					$result = $conn->query($sql);
-					if ($result->num_rows > 0) 
-					{
-						while ($row=$result->fetch_assoc())
+		if(isset($_GET['menu'])) 
+		{
+			switch ($_GET['menu'])
+			{
+				case 'active' : ?>
+					<!-- Active Orders List -->
+					<div class="text-center">
+						<hr class="d-inline-block w-25">
+						<h1 class="d-inline-block">Active orders</h1>
+						<hr class="d-inline-block w-25">
+					</div>
+					<div id="activeOrdersContainer" class="row">
+						<?php
+							$sql = "select * from transaction where date(datetime) = '2022-05-01' and status = 'PENDING'"; //select * from transaction where date(datetime) = date(now())
+							$result = $conn->query($sql);
+							if ($result->num_rows > 0) 
 							{
-								$transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
+								while ($row=$result->fetch_assoc())
+									{
+										$transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
+									}
 							}
-					}
-					//print_r($transArr); //test array set
-				?>
-				<?php
-				function str_after($str, $search)
-				{
-					return $search === '' ? $str : array_reverse(explode($search, $str, 2))[0];
-				}
-				?>
-				<?php
-					foreach($transArr as $key => $value) 
-					{
-						if ($value['datetime'] == '2008-11-11 13:23:44')
-						{?>
-							<div class="col-sm-4 pt-4" id="<?php echo $value['transaction id']?>">
-								<div class="card">
-									<div class="card-body">
-										<h5 class="card-title">ID: <span class="float-right orderID"> <?php echo $value['transaction id']?> </span>
-										</h5>
-										<h5 class="card-title"> Time: <span class="float-right orderTime"> <?php echo str_after($value['datetime'],' ') ?> </span>
-										</h5>
-										<h5 class="card-title" hidden>Completed Time: 
-											<span class="float-right completedTime"></span>
-										</h5>
-										<input class="table" hidden value="<?php echo $value['table id']?>">
-										<input class="payment" hidden value="Visa"> <!-- how? -->
-										<hr>
-										<?php 
-											$id = strval($value['transaction id']);
-											$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
-											$result = $conn->query($sql);
-											if ($result->num_rows > 0) 
-											{
-												while ($row=$result->fetch_assoc())
-													{
-														$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
-													} 
-											} 
-											if (!empty($cartArr))
-											{
-												foreach($cartArr as $k => $v)
-												{?>
-												<p class="card-text">
-													<p class="food">
-														<span class="qty"><?php echo $v['quantity']?></span>x
-														<span class="itemName"><?php echo $v['item name']?></span>
-														<input class="price" hidden value=<?php echo $v['price']?>>
-													</p>
-												</p><?php
+							//print_r($transArr); //test array set
+						?>
+						<?php
+						function str_after($str, $search)
+						{
+							return $search === '' ? $str : array_reverse(explode($search, $str, 2))[0];
+						}
+						?>
+						<?php
+						if (!empty($transArr)) 
+						{
+							foreach($transArr as $key => $value) 
+							{?>
+								<div class="col-sm-4 pt-4" id="<?php echo $value['transaction id']?>">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">ID: <span class="float-right orderID"> <?php echo $value['transaction id']?> </span>
+											</h5>
+											<h5 class="card-title"> Time: <span class="float-right orderTime"> <?php echo str_after($value['datetime'],' ') ?> </span>
+											</h5>
+											<h5 class="card-title" hidden>Completed Time: 
+												<span class="float-right completedTime"></span>
+											</h5>
+											<input class="table" hidden value="<?php echo $value['table id']?>">
+											<input class="payment" hidden value="Visa"> <!-- how? -->
+											<hr>
+											<?php 
+												$id = strval($value['transaction id']);
+												$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
+												$result = $conn->query($sql);
+												if ($result->num_rows > 0) 
+												{
+													while ($row=$result->fetch_assoc())
+														{
+															$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
+														} 
+												} 
+												if (!empty($cartArr))
+												{
+													foreach($cartArr as $k => $v)
+													{?>
+													<p class="card-text">
+														<p class="food">
+															<span class="qty"><?php echo $v['quantity']?></span>x
+															<span class="itemName"><?php echo $v['item name']?></span>
+															<input class="price" hidden value=<?php echo $v['price']?>>
+														</p>
+													</p><?php
+													}
+													unset($cartArr);
 												}
-												unset($cartArr);
-											}
-										?>
-										<hr>
-										<div class="text-center">
-											<button type="button" class="btn btn-primary" onclick="activeOrderModalHandler('<?php echo $value['transaction id']?>')"> View More Details </button>
+											?>
+											<hr>
+											<div class="text-center">
+												<button type="button" class="btn btn-primary" onclick="activeOrderModalHandler('<?php echo $value['transaction id']?>')"> View More Details </button>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div><?php
+								<?php
+							}
+						}?>
+					</div><?php
+
+				break;
+
+				case 'complete' : ?>
+					<!-- Completed Orders List -->	
+					<div class="text-center">
+						<hr class="d-inline-block w-25">
+						<h1 class="d-inline-block">Completed Orders</h1>
+						<hr class="d-inline-block w-25">
+					</div>
+					<div id="activeOrdersContainer" class="row">
+						<?php
+							$sql = "select * from transaction where date(datetime) = '2022-05-01' and status = 'COMPLETED'"; //select * from transaction where date(datetime) = date(now())
+							$result = $conn->query($sql);
+							if ($result->num_rows > 0) 
+							{
+								while ($row=$result->fetch_assoc())
+									{
+										$transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
+									}
+							}
+							//print_r($transArr); //test array set
+						?>
+						<?php
+						function str_after($str, $search)
+						{
+							return $search === '' ? $str : array_reverse(explode($search, $str, 2))[0];
 						}
-					}?>
-			</div>
-            
-            <div>
-                <div class="text-center">
-                    <hr class="d-inline-block w-25">
-                    <h1 class="d-inline-block">Completed Orders</h1>
-                    <hr class="d-inline-block w-25">
-                </div>
-                <div class="row" id="completedOrdersContainer">
-                    <!-- Completed Item Container -->
-                </div>
-		</div>
+						?>
+						<?php
+						if (!empty($transArr)) 
+						{
+							foreach($transArr as $key => $value) 
+							{?>
+								<div class="col-sm-4 pt-4" id="<?php echo $value['transaction id']?>">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">ID: <span class="float-right orderID"> <?php echo $value['transaction id']?> </span>
+											</h5>
+											<h5 class="card-title"> Time: <span class="float-right orderTime"> <?php echo str_after($value['datetime'],' ') ?> </span>
+											</h5>
+											<h5 class="card-title" hidden>Completed Time: 
+												<span class="float-right completedTime"></span>
+											</h5>
+											<input class="table" hidden value="<?php echo $value['table id']?>">
+											<input class="payment" hidden value="Visa"> <!-- how? -->
+											<hr>
+											<?php 
+												$id = strval($value['transaction id']);
+												$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
+												$result = $conn->query($sql);
+												if ($result->num_rows > 0) 
+												{
+													while ($row=$result->fetch_assoc())
+														{
+															$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
+														} 
+												} 
+												if (!empty($cartArr))
+												{
+													foreach($cartArr as $k => $v)
+													{?>
+													<p class="card-text">
+														<p class="food">
+															<span class="qty"><?php echo $v['quantity']?></span>x
+															<span class="itemName"><?php echo $v['item name']?></span>
+															<input class="price" hidden value=<?php echo $v['price']?>>
+														</p>
+													</p><?php
+													}
+													unset($cartArr);
+												}
+											?>
+											<hr>
+											<div class="text-center">
+												<button type="button" class="btn btn-primary" onclick="completedOrderModalHandler('<?php echo $value['transaction id']?>')"> View More Details </button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<?php
+							}
+						}?>
+					</div><?php
+
+				break;
+
+				}	
+		}?>
 		<!-- Button trigger modal -->
 		<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Launch demo modal
@@ -257,7 +359,10 @@
 					</div>
 					<div class="modal-footer text-center">
 						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-						<button id="btn-completeOrder" type="button" onclick="completeOrder()" class="btn btn-lg btn-success mr-auto ml-auto">Complete Order</button>
+						<form method="post" name="form" action="manageOrders.php">
+						<input type="hidden" id="cID" name="cID">
+						<button id="btn-completeOrder" type="submit" onclick="completeOrder()" class="btn btn-lg btn-success mr-auto ml-auto">Complete Order</button>
+						</form>
 					</div>
 				</div>
 			</div>
