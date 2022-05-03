@@ -1,4 +1,25 @@
-<?php session_start(); ?>
+<?php
+  session_start();
+  if(isset($_GET['action']) == "add"){
+    $id = $_GET['id'];
+
+    if(isset($_SESSION['cart'][$id])){
+      $previous=$_SESSION['cart'][$id]['qty'];
+      $_SESSION['cart'][$id] = array("pid"=>$id, "qty"=>$previous+$_POST['quantity']);
+    }
+    else{
+      $_SESSION['cart'][$id] = array("pid"=>$id, "qty"=>$_POST['quantity']);
+    }
+    header("location:home.php");
+  }
+
+  if(isset($_GET['remove'])){
+    $id = $_GET['remove'];
+    session_unset($_SESSION['cart'][$id]);
+    header("location:home.php");
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,7 +99,18 @@
 						$menuArr[] = array('item id' => $row["ITEM ID"],'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"], 'imageurl' => $row["IMAGEURL"], 'category' => $row["CATEGORY"] );
 					}
 			}
-			//print_r($menuArr); //test array set
+
+      $total = 0;
+      if(isset($_SESSION['cart'])){
+      foreach($_SESSION['cart'] as $key => $value){
+        $query = mysqli_query($conn, "select * from `item` where `item id` = $key");
+    
+        foreach($query as $a){
+            $total += $value['qty']*$a["PRICE"];
+        }
+      }
+    }
+
 		?>
     <div class="bg-dark p-3">
       <div class="row mx-0 py-3 bg-light rounded-3">
@@ -88,10 +120,10 @@
             <div class="btn btn-primary container" onclick="activeCartModalHandler()">
                 <div style="width: 50%;float: left;"> 
                   <i class="fa" style="font-size:30px">&#xf07a;</i>
-                  <span class='badge badge-warning' id='totalitems'> 0 </span>
+                  <span class='badge badge-warning' id='totalitems'><?php if(isset($_SESSION['cart'])){echo array_sum(array_column($_SESSION['cart'], 'qty')); }else{echo "0";}?></span>
                 </div>
                 <div style="margin-left: 50%;"> 
-                  <li class="d-flex justify-content-between align-items-center"> <span id="totalcost" class="card-text">$0.00</span></li>
+                  <li class="d-flex justify-content-between align-items-center"> <span id="totalcost" class="card-text">$<?php echo number_format($total, 2);?></span></li>
                 </div>
             </div>
           </a>
@@ -116,10 +148,10 @@
 					<?php
 						foreach($menuArr as $key => $value) {
 							if ($value['category'] == 'Entree') {?>
-							<div class="col">
+							<form action="home.php?action=add&id=<?php echo $value['item id']?>" method="post">
+              <div class="col">
               <div class="card">
 
-								<!-- <div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')"> -->
 									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
 										<h6 class="card-title"><?php echo $value['item name']?></h6>
@@ -127,10 +159,11 @@
                     <input type="button" class="border rounded bg-white sign" onclick="decrementValue('<?php echo $value['item id']?>')" value="-" />
                     <input type="text" class="border rounded bg-white sign" name="quantity" value="1" maxlength="2" max="10" size="1" id="<?php echo $value['item id']?>" />
                     <input type="button" class="border rounded bg-white sign" onclick="incrementValue('<?php echo $value['item id']?>')" value="+" /> 
-                    <button class="btn w-100 rounded my-2 border" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">Add to cart</button>
+                    <input type="submit" value="Add to cart" name="btncart" class="btn w-100 rounded my-2 border">
                   </div> 
 								</div>
 							</div>
+              </form>
 							<?php }
 						}
 					?> 
@@ -141,7 +174,8 @@
                     <?php
 						foreach($menuArr as $key => $value) {
 							if ($value['category'] == 'Meals') {?>
-							<div class="col">
+							<form action="home.php?action=add&id=<?php echo $value['item id']?>" method="post">
+              <div class="col">
 								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
 									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
@@ -150,10 +184,11 @@
                     <input type="button" class="border rounded bg-white sign" onclick="decrementValue('<?php echo $value['item id']?>')" value="-" />
                     <input type="text" class="border rounded bg-white sign" name="quantity" value="1" maxlength="2" max="10" size="1" id="<?php echo $value['item id']?>" />
                     <input type="button" class="border rounded bg-white sign" onclick="incrementValue('<?php echo $value['item id']?>')" value="+" /> 
-                    <button class="btn w-100 rounded my-2 border" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">Add to cart</button>
+                    <input type="submit" value="Add to cart" name="btncart" class="btn w-100 rounded my-2 border">
 									</div>
 								</div>
 							</div>
+              </form>
 							<?php }
 						}
 					?> 
@@ -164,7 +199,8 @@
                     <?php
 						foreach($menuArr as $key => $value) {
 							if ($value['category'] == 'Drinks') {?>
-							<div class="col">
+							<form action="home.php?action=add&id=<?php echo $value['item id']?>" method="post">
+              <div class="col">
 								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
 									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
@@ -173,10 +209,11 @@
                     <input type="button" class="border rounded bg-white sign" onclick="decrementValue('<?php echo $value['item id']?>')" value="-" />
                     <input type="text" class="border rounded bg-white sign" name="quantity" value="1" maxlength="2" max="10" size="1" id="<?php echo $value['item id']?>" />
                     <input type="button" class="border rounded bg-white sign" onclick="incrementValue('<?php echo $value['item id']?>')" value="+" /> 
-                    <button class="btn w-100 rounded my-2 border" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">Add to cart</button>
+                    <input type="submit" value="Add to cart" name="btncart" class="btn w-100 rounded my-2 border">
 									</div>
 								</div>
 							</div>
+              </form>
 							<?php }
 						}
 					?> 
@@ -193,115 +230,70 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+          
           <div class="card-body">
+                   <?php
+                      if(!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0){
+                        echo "<h5>Cart is empty</h5>";
+                      }
+                      else{
+                  ?>
                   <h6 class="d-flex justify-content-between align-items-center"><span>Cart</span><button onclick="orderbasketClear();" class="btn btn-sm btn-danger rounded-pill">Clear</button></h6>
                   <hr>
-                  <ul id="cartlist" class="list-unstyled" style="height: 50vh; overflow-y:auto;"></ul>
-                  <hr>
+                  
                   <ul class="list-unstyled">
-                      <li class="d-flex justify-content-between align-items-center"><big>Total Items: </big><big id="totalcartitems" class="card-text fw-bold">0</big></li>
-                      <li class="d-flex justify-content-between align-items-center"><big>Total Amount: </big> <big class="fw-bold"><span id="totalcartcost" class="card-text">0.00</span></big></li>
+                    <table class="table">
+                      <thread>
+                        <tr>
+                          <th>Image</th>
+                          <th>Item</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Amount</th>
+                          <th>Action</th>
+                        </tr>
+                      </thread>
+                      <tbody>
+                      <?php
+       
+                      foreach($_SESSION['cart'] as $key => $value){
+                        $query = mysqli_query($conn, "select * from `item` where `item id` = $key");
+
+                        foreach($query as $a){
+                          echo "<tr>
+                            <td><img src='".$a["IMAGEURL"]."' width=\"100\" height=\"100\"/></td>
+                            <td>".$a["ITEM NAME"]."</td>
+                            <td>$".$a["PRICE"]."</td>
+                            <td>".$value['qty']."</td>
+                            <td>".$value['qty']*$a["PRICE"]."</td>
+                            <td><a class='btn btn-danger btn-sm' href='?remove=".$key."'>Delete</a></td>
+                            </tr>";
+                        }
+                      }
+                      ?>
+                        </tbody>
+                        
+                      </table>
                         <li>
+                          <h5>Total Amount: <?php echo number_format($total, 2);?></h5>
                             <hr>
                             <button id="btn-checkout" type="button" onclick="checkOut()" class="btn btn-lg btn-success mr-auto ml-auto">Check Out</button>
-                            <!-- <button class="btn btn-primary btn-lg w-100 rounded-pill" onclick="checkOut()">Check Out</button> -->
                         </li>
                     </ul>
+                    <?php
+
+                      }
+
+                    ?>
               </div>
-					<div class="modal-footer text-center">
-						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-						
+              
+					<div class="modal-footer text-center">						
 					</div>
 				</div>
 			</div>
 		</div>
     <script>
-        const idarray = [];
-        const pricearray = [];
-        const itemarray = [];
-        const imgarray = [];
-        let i = 0;
-        function orderbasketClear(){
-            let orderlist = document.getElementById('cartlist');
-            orderlist.innerHTML = '';
-            pricearray.length = 0;
-            itemarray.length = 0;
-            idarray.length = 0;
-            id = 0;
-            imgarray.length = 0;
-            itemcount();
-            totalprice();
-        }
-        function orderbasket(item_name,item_price,img_src){
-            idarray.push(i);
-            itemarray.push(item_name);
-            pricearray.push(item_price);
-            imgarray.push(img_src);
-            let orderlist = document.getElementById('cartlist');
-            const orderitem = document.createElement('li');
-            //orderitem.
-            
-            orderitem.className = 'd-flex justify-content-between align-items-center';
-            const orderitempricespan = document.createElement('span')
-            const orderitemname = document.createTextNode(" " + item_name);
-            const orderitemprice = document.createTextNode(' $ ' + item_price.toFixed(2));
-            orderitempricespan.className = 'text-danger';
-            orderitempricespan.appendChild(orderitemprice);
-            const deletebutton = document.createElement('button');
-            const deletebuttontext = document.createTextNode('X');
-            deletebutton.appendChild(deletebuttontext);
-            deletebutton.setAttribute('onclick','deleteItem('+i+', this)');
-            deletebutton.className = 'btn btn-danger rounded-pill';
-            const orderitemimgtag = document.createElement('img');
-            orderitemimgtag.src = img_src;
-            orderitemimgtag.className = 'w-25 rounded-3 border border-dark';
-
-            const orderitempricespanleft = document.createElement('span');
-            orderitempricespanleft.appendChild(orderitemimgtag);
-
-            orderitempricespanleft.appendChild(orderitemname);
-            orderitempricespanleft.appendChild(orderitempricespan);
-            orderitem.appendChild(orderitempricespanleft);
-            orderitem.appendChild(deletebutton);
-            orderlist.appendChild(orderitem);
-
-
-            itemcount();
-            totalprice();
-            i++;
-        };
-        function itemcount(){
-            document.getElementById('totalitems').innerText =  itemarray.length;
-            document.getElementById('totalcartitems').innerText =  itemarray.length;
-
-        }
-        function totalprice(){
-            if(pricearray.length === 0)
-            {
-                document.getElementById('totalcost').innerText = "$0.00";
-                document.getElementById('totalcartcost').innerText = "$0.00";
-            }else{
-                document.getElementById('totalcost').innerText = "$"+pricearray.reduce(
-                sumarray).toFixed(2);
-                document.getElementById('totalcartcost').innerText = "$"+pricearray.reduce(
-                sumarray).toFixed(2);
-                function sumarray(total,num){
-                    return total+num;
-            };
-            }
-
-        }
-        function deleteItem(orderid, button){
-            const index = idarray.indexOf(orderid);
-            idarray.splice(index,1);
-            pricearray.splice(index,1);
-            itemarray.splice(index,1);
-            imgarray.splice(index,1);
-            itemcount();
-            totalprice();
-            let orderlist = document.getElementById('cartlist');
-            orderlist.removeChild(button.parentElement);
-        }
+        
         function activeCartModalHandler()
         {
           $('#exampleModalCenter').modal('show');
