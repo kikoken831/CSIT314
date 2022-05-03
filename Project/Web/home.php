@@ -53,6 +53,8 @@
       margin: 25px;
   }
 
+  
+
       </style>
     <title>Home</title>
   </head>
@@ -82,9 +84,8 @@
       <div class="row mx-0 py-3 bg-light rounded-3">
         <div class="">
           Order #88 <small class="text-muted"><span id='date-time'></small>    
-          <div class="card mb-3 rounded-3" onclick="activeCartModalHandler()">
-          <!-- <a href="cart.php" style="width: 25%;"> -->
-            <div class="btn btn-primary container">
+          <div class="card mb-3 rounded-3">
+            <div class="btn btn-primary container" onclick="activeCartModalHandler()">
                 <div style="width: 50%;float: left;"> 
                   <i class="fa" style="font-size:30px">&#xf07a;</i>
                   <span class='badge badge-warning' id='totalitems'> 0 </span>
@@ -116,12 +117,18 @@
 						foreach($menuArr as $key => $value) {
 							if ($value['category'] == 'Entree') {?>
 							<div class="col">
-								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
+              <div class="card">
+
+								<!-- <div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')"> -->
 									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
 										<h6 class="card-title"><?php echo $value['item name']?></h6>
 										<h6 class="fw-bold">$<?php echo $value['price']?></h6>
-									</div>
+                    <input type="button" class="border rounded bg-white sign" onclick="decrementValue('<?php echo $value['item id']?>')" value="-" />
+                    <input type="text" class="border rounded bg-white sign" name="quantity" value="1" maxlength="2" max="10" size="1" id="<?php echo $value['item id']?>" />
+                    <input type="button" class="border rounded bg-white sign" onclick="incrementValue('<?php echo $value['item id']?>')" value="+" /> 
+                    <button class="btn w-100 rounded my-2 border" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">Add to cart</button>
+                  </div> 
 								</div>
 							</div>
 							<?php }
@@ -138,8 +145,12 @@
 								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
 									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
-										<h6 class="card-title"><?php echo $value['item name']?></h6>
+                  <h6 class="card-title"><?php echo $value['item name']?></h6>
 										<h6 class="fw-bold">$<?php echo $value['price']?></h6>
+                    <input type="button" class="border rounded bg-white sign" onclick="decrementValue('<?php echo $value['item id']?>')" value="-" />
+                    <input type="text" class="border rounded bg-white sign" name="quantity" value="1" maxlength="2" max="10" size="1" id="<?php echo $value['item id']?>" />
+                    <input type="button" class="border rounded bg-white sign" onclick="incrementValue('<?php echo $value['item id']?>')" value="+" /> 
+                    <button class="btn w-100 rounded my-2 border" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">Add to cart</button>
 									</div>
 								</div>
 							</div>
@@ -157,8 +168,12 @@
 								<div class="card" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">
 									<img src="<?php echo $value['imageurl']?>" class="card-img-top" alt="...">
 									<div class="card-body">
-										<h6 class="card-title"><?php echo $value['item name']?></h6>
+                  <h6 class="card-title"><?php echo $value['item name']?></h6>
 										<h6 class="fw-bold">$<?php echo $value['price']?></h6>
+                    <input type="button" class="border rounded bg-white sign" onclick="decrementValue('<?php echo $value['item id']?>')" value="-" />
+                    <input type="text" class="border rounded bg-white sign" name="quantity" value="1" maxlength="2" max="10" size="1" id="<?php echo $value['item id']?>" />
+                    <input type="button" class="border rounded bg-white sign" onclick="incrementValue('<?php echo $value['item id']?>')" value="+" /> 
+                    <button class="btn w-100 rounded my-2 border" onclick="orderbasket('<?php echo $value['item name']?>',<?php echo $value['price']?>,'<?php echo $value['imageurl']?>')">Add to cart</button>
 									</div>
 								</div>
 							</div>
@@ -290,6 +305,26 @@
         function activeCartModalHandler()
         {
           $('#exampleModalCenter').modal('show');
+        }
+
+        function incrementValue(itemname)
+        {
+            var value = parseInt(document.getElementById(itemname).value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value<10){
+                value++;
+                    document.getElementById(itemname).value = value;
+            }
+        }
+        function decrementValue(itemid)
+        {
+            var value = parseInt(document.getElementById(itemid).value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value>1){
+                value--;
+                    document.getElementById(itemid).value = value;
+            }
+
         }
         
 
