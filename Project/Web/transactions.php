@@ -10,31 +10,12 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			// function completeOrder(orderID) {
-			// 	$('#exampleModalCenter').modal('hide');
-			// 	// Get the id of the element 
-			// 	let elemId = "#" + orderID;
-                
-			// 	// Appends the element to a new location
-			// 	$(elemId).appendTo("#completedOrdersContainer");
-
-			// 	// Edit attributes elements 
-            //     let elem = document.getElementById(orderID)
-                
-            //     // changes on click handler()
-            //     elem.querySelector('.btn').onclick = () => completedOrderModalHandler(orderID)
-                
-			// 	// Adds completed time
-            //     let currentTime = new Date().toLocaleTimeString();
-            //     document.getElementById(orderID).querySelector(".completedTime").innerHTML = currentTime
-			// 	document.getElementById('modal-completedTime').innerHTML = currentTime
-            //     document.getElementById(orderID).getElementsByTagName("h5")[2].removeAttribute("hidden")
-			// }
 			// On click handler for active orders button
 			function activeOrderModalHandler(orderID) {
 				// Gets the data of the current element
 				let cardIDName = "#" + orderID
 				let card = document.getElementById(orderID)
+				let orderDate = card.querySelector('.orderDate').innerHTML
 				let orderTime = card.querySelector('.orderTime').innerHTML
 				let foodItems = card.getElementsByClassName('food')
                 let tableNum = card.querySelector('.table').value
@@ -53,8 +34,9 @@
                 console.log(foodDict)
                 
 				// Populates the data in modal 
-                document.getElementById('modal-orderTime').innerHTML = orderTime;
                 document.getElementById('modal-orderID').innerHTML = orderID;
+                document.getElementById('modal-orderDate').innerHTML = orderDate;
+                document.getElementById('modal-orderTime').innerHTML = orderTime;
                 document.getElementById('modal-table').innerHTML = tableNum;
                 document.getElementById('modal-payment').innerHTML = paymentMethod;
                 
@@ -75,22 +57,9 @@
                 }                    
                 document.getElementById('modal-total').innerHTML = "$" + sum.toFixed(2)
                 
-                // Edits param for complete order handler
-                //document.getElementById('btn-completeOrder').onclick = () => completeOrder(orderID)
-
 				// Opens Modal 
-                $('#modal-completedTime').hide()
-				$('#modal-completedTimeTag').hide()
 				$('#exampleModalCenter').modal('show')
 			}
-			// // On click handler for completed orders button 
-            // function completedOrderModalHandler(orderID){
-            //     // Hides button 
-            //     activeOrderModalHandler(orderID)
-            //     $('#modal-completedTime').show()
-			// 	$('#modal-completedTimeTag').show()
-            //     $('#btn-completeOrder').hide()
-            // }
 		</script>
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
@@ -137,10 +106,9 @@
 								<div class="card-body">
 									<h5 class="card-title">ID: <span class="float-right orderID"> <?php echo $value['transaction id']?> </span>
 									</h5>
-									<h5 class="card-title"> Time: <span class="float-right orderTime"> <?php echo str_after($value['datetime'],' ') ?> </span>
+									<h5 class="card-title">Date: <span class="float-right orderDate"> <?php echo strtok($value['datetime'],' ') ?> </span> 
 									</h5>
-									<h5 class="card-title" hidden>Completed Time: 
-										<span class="float-right completedTime"></span>
+									<h5 class="card-title">Time: <span class="float-right orderTime"> <?php echo str_after($value['datetime'],' ') ?> </span>
 									</h5>
 									<input class="table" hidden value="<?php echo $value['table id']?>">
 									<input class="payment" hidden value="Visa"> <!-- how? -->
@@ -189,7 +157,7 @@
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h6 class="modal-title"> Order Details </h6>
+						<h5 class="modal-title"> Order Details </h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -197,6 +165,9 @@
 					<div class="modal-body">
 						<h6>Order ID: 
                             <span id="modal-orderID" class="float-right"></span>
+						</h6>						
+						<h6>Order Date: 
+                            <span id="modal-orderDate" class="float-right"></span>
 						</h6>
 						<h6>Order Time: 
                             <span id="modal-orderTime" class="float-right"></span>
@@ -206,9 +177,6 @@
 						</h6>
 						<h6>Payment: 
                             <span id="modal-payment" class="float-right"></span>
-						</h6>
-                        <h6 id="modal-completedTimeTag">Completed Time: 
-                            <span id="modal-completedTime" class="float-right"></span>
 						</h6>
 						<hr>
 						<div class="itemContainer">
@@ -238,7 +206,6 @@
 			</div>
 		</div>
 		<!-- Modal for Completed Orders -->
-		<!-- Completed Orders List -->
 
 		</div>
 		</div>
