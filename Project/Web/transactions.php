@@ -10,26 +10,26 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			function completeOrder(orderID) {
-				$('#exampleModalCenter').modal('hide');
-				// Get the id of the element 
-				let elemId = "#" + orderID;
+			// function completeOrder(orderID) {
+			// 	$('#exampleModalCenter').modal('hide');
+			// 	// Get the id of the element 
+			// 	let elemId = "#" + orderID;
                 
-				// Appends the element to a new location
-				$(elemId).appendTo("#completedOrdersContainer");
+			// 	// Appends the element to a new location
+			// 	$(elemId).appendTo("#completedOrdersContainer");
 
-				// Edit attributes elements 
-                let elem = document.getElementById(orderID)
+			// 	// Edit attributes elements 
+            //     let elem = document.getElementById(orderID)
                 
-                // changes on click handler()
-                elem.querySelector('.btn').onclick = () => completedOrderModalHandler(orderID)
+            //     // changes on click handler()
+            //     elem.querySelector('.btn').onclick = () => completedOrderModalHandler(orderID)
                 
-				// Adds completed time
-                let currentTime = new Date().toLocaleTimeString();
-                document.getElementById(orderID).querySelector(".completedTime").innerHTML = currentTime
-				document.getElementById('modal-completedTime').innerHTML = currentTime
-                document.getElementById(orderID).getElementsByTagName("h5")[2].removeAttribute("hidden")
-			}
+			// 	// Adds completed time
+            //     let currentTime = new Date().toLocaleTimeString();
+            //     document.getElementById(orderID).querySelector(".completedTime").innerHTML = currentTime
+			// 	document.getElementById('modal-completedTime').innerHTML = currentTime
+            //     document.getElementById(orderID).getElementsByTagName("h5")[2].removeAttribute("hidden")
+			// }
 			// On click handler for active orders button
 			function activeOrderModalHandler(orderID) {
 				// Gets the data of the current element
@@ -76,22 +76,21 @@
                 document.getElementById('modal-total').innerHTML = "$" + sum.toFixed(2)
                 
                 // Edits param for complete order handler
-                document.getElementById('btn-completeOrder').onclick = () => completeOrder(orderID)
+                //document.getElementById('btn-completeOrder').onclick = () => completeOrder(orderID)
 
 				// Opens Modal 
-                $('#btn-completeOrder').show()
                 $('#modal-completedTime').hide()
 				$('#modal-completedTimeTag').hide()
 				$('#exampleModalCenter').modal('show')
 			}
-			// On click handler for completed orders button 
-            function completedOrderModalHandler(orderID){
-                // Hides button 
-                activeOrderModalHandler(orderID)
-                $('#modal-completedTime').show()
-				$('#modal-completedTimeTag').show()
-                $('#btn-completeOrder').hide()
-            }
+			// // On click handler for completed orders button 
+            // function completedOrderModalHandler(orderID){
+            //     // Hides button 
+            //     activeOrderModalHandler(orderID)
+            //     $('#modal-completedTime').show()
+			// 	$('#modal-completedTimeTag').show()
+            //     $('#btn-completeOrder').hide()
+            // }
 		</script>
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
@@ -103,12 +102,6 @@
 		<div class="container">
 			<h1 class="text-center">Transaction History Page</h1>
 			<hr>
-			<!-- Active Orders List -->
-			<div class="text-center">
-				<!-- <hr class="d-inline-block w-25">
-				<h1 class="d-inline-block">Active orders</h1>
-				<hr class="d-inline-block w-25"> -->
-        </div>
 			<div id="activeOrdersContainer" class="row">
 				<?php //db pulls
 					$servername="localhost";
@@ -128,7 +121,7 @@
 								$transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
 							}
 					}
-					print_r($transArr); //test array set
+					//print_r($transArr); //test array set
 				?>
 				<?php
 				function str_after($str, $search)
@@ -138,69 +131,55 @@
 				?>
 				<?php
 					foreach($transArr as $key => $value) 
-					{
-						if ($value['datetime'] == '2008-11-11 13:23:44')
-						{?>
-							<div class="col-sm-4 pt-4" id="<?php echo $value['transaction id']?>">
-								<div class="card">
-									<div class="card-body">
-										<h5 class="card-title">ID: <span class="float-right orderID"> <?php echo $value['transaction id']?> </span>
-										</h5>
-										<h5 class="card-title"> Time: <span class="float-right orderTime"> <?php echo str_after($value['datetime'],' ') ?> </span>
-										</h5>
-										<h5 class="card-title" hidden>Completed Time: 
-											<span class="float-right completedTime"></span>
-										</h5>
-										<input class="table" hidden value="<?php echo $value['table id']?>">
-										<input class="payment" hidden value="Visa"> <!-- how? -->
-										<hr>
-										<?php 
-											$id = strval($value['transaction id']);
-											$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
-											$result = $conn->query($sql);
-											if ($result->num_rows > 0) 
-											{
-												while ($row=$result->fetch_assoc())
-													{
-														$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
-													} 
-											} 
-											if (!empty($cartArr))
-											{
-												foreach($cartArr as $k => $v)
-												{?>
-												<p class="card-text">
-													<p class="food">
-														<span class="qty"><?php echo $v['quantity']?></span>x
-														<span class="itemName"><?php echo $v['item name']?></span>
-														<input class="price" hidden value=<?php echo $v['price']?>>
-													</p>
-												</p><?php
-												}
-												unset($cartArr);
+					{?>
+						<div class="col-sm-4 pt-4" id="<?php echo $value['transaction id']?>">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">ID: <span class="float-right orderID"> <?php echo $value['transaction id']?> </span>
+									</h5>
+									<h5 class="card-title"> Time: <span class="float-right orderTime"> <?php echo str_after($value['datetime'],' ') ?> </span>
+									</h5>
+									<h5 class="card-title" hidden>Completed Time: 
+										<span class="float-right completedTime"></span>
+									</h5>
+									<input class="table" hidden value="<?php echo $value['table id']?>">
+									<input class="payment" hidden value="Visa"> <!-- how? -->
+									<hr>
+									<?php 
+										$id = strval($value['transaction id']);
+										$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
+										$result = $conn->query($sql);
+										if ($result->num_rows > 0) 
+										{
+											while ($row=$result->fetch_assoc())
+												{
+													$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
+												} 
+										} 
+										if (!empty($cartArr))
+										{
+											foreach($cartArr as $k => $v)
+											{?>
+											<p class="card-text">
+												<p class="food">
+													<span class="qty"><?php echo $v['quantity']?></span>x
+													<span class="itemName"><?php echo $v['item name']?></span>
+													<input class="price" hidden value=<?php echo $v['price']?>>
+												</p>
+											</p><?php
 											}
-										?>
-										<hr>
-										<div class="text-center">
-											<button type="button" class="btn btn-primary" onclick="activeOrderModalHandler('<?php echo $value['transaction id']?>')"> View More Details </button>
-										</div>
+											unset($cartArr);
+										}
+									?>
+									<hr>
+									<div class="text-center">
+										<button type="button" class="btn btn-primary" onclick="activeOrderModalHandler('<?php echo $value['transaction id']?>')"> View More Details </button>
 									</div>
 								</div>
-							</div><?php
-						}
+							</div>
+						</div><?php
 					}?>
 			</div>
-            
-            <div>
-                <div class="text-center">
-                    <hr class="d-inline-block w-25">
-                    <h1 class="d-inline-block">Completed Orders</h1>
-                    <hr class="d-inline-block w-25">
-                </div>
-                <div class="row" id="completedOrdersContainer">
-                    <!-- Completed Item Container -->
-                </div>
-		</div>
 		<!-- Button trigger modal -->
 		<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Launch demo modal
@@ -254,10 +233,6 @@
 								</tfoot>
 							</table>
 						</div>
-					</div>
-					<div class="modal-footer text-center">
-						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-						<button id="btn-completeOrder" type="button" onclick="completeOrder()" class="btn btn-lg btn-success mr-auto ml-auto">Complete Order</button>
 					</div>
 				</div>
 			</div>
