@@ -27,13 +27,24 @@
         $in = $_POST['itemname'];
         $c = $_POST['category'];
         $p = $_POST['price'];
-        $iu = $_POST['imageurl'];
         $ii = $_POST['itemID'];
-        $sql = "update `item` set `ITEM NAME` = '$in', `CATEGORY` = '$c', `PRICE` = $p where `ITEM ID` = $ii";
+        $vs = $_POST['visibility'];
+        $sql = "update `item` set `ITEM NAME` = '$in', `CATEGORY` = '$c', `PRICE` = $p , `VISIBLE` = $vs where `ITEM ID` = $ii";
         $conn->query($sql);
         $_POST['updateDB'] = "";
     }
-    
+
+
+    if(isset($_POST['addItem']))
+    {
+        $in = $_POST['item_name'];
+        $c = $_POST['category'];
+        $p = $_POST['price'];
+        $sql = "INSERT INTO `item` ( `ITEM NAME`, `CATEGORY`, `PRICE`, `IMAGEURL`, `VISIBLE`) VALUES
+        ( '$in', '$c', $p, 'images/basic.png', 1)";
+        $conn->query($sql);
+        $_POST['addItem'] = "";
+    }
 
     //pull all items
     $sql = "select * from `item`";
@@ -47,6 +58,8 @@
                   'visible' => $row["VISIBLE"]);
             }
     }
+
+
     ?>
     
 
@@ -80,9 +93,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Price</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Image Source</th>
-                    <th scope="col">Hide</th>
-                    <th scope="col">Show</th>
+                    <th scope="col">Visibility</th>
                     <th scope="col">Update</th>
                 </tr>
             </thead>
@@ -104,7 +115,11 @@
                         </td>
                         <!-- Item Category -->
                         <td>
-                            <input class="form-control" name="category" value="<?php echo $value['category']?>" required/>
+                            <select class="form-control" name="category">
+                                <option  <?php if($value['category'] == 'Entree'){echo "selected = \"selected\"";}?> value="Entree">Entree</option>
+                                <option <?php if($value['category'] == 'Meals'){echo "selected = \"selected\"";}?>  value="Meals">Meals</option>
+                                <option <?php if($value['category'] == 'Drinks'){echo "selected = \"selected\"";}?>  value="Drinks">Drinks</option>
+                            </select>
                         </td>
                         <!-- Item Price -->
                         <td>
@@ -112,29 +127,21 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">$</div>
                                 </div>
-                                <input type="text" class="form-control" name="price" value="<?php echo $value['price']?>" required />
+                                <input type="text" class="form-control" name="price" value="<?php echo number_format($value['price'],2,'.','')?>" required />
                             </div>
                         </td>
                         <!-- Image display -->
                         <td>
                             <img src="./<?php echo $value['imageurl']?>" alt="..." class="img-rounded" />
                         </td>
-                        <!-- Image Upload URL -->
-                        <td>
-                            <input class="form-control" name="imageurl" value="<?php echo $value['imageurl']?>" required/>
-                        </td>
+
                         <td>
                             <!-- Add ID as value  -->
                             <!-- If item is hidden add disabled here -->
-                            <button name="deleteItem" type="submit" class="btn btn-danger" <?php if($value['visible'] == 0){echo $disabled = "disabled";}?>>
-                                Hide
-                            </button>
-                        </td>
-                        <td>
-                            <!-- If item is not hidden add disabled  -->
-                            <button name="editItem" type="submit" class="btn btn-success" <?php if($value['visible'] == 1){echo $disabled = "disabled";}?>>
-                                Show
-                            </button>
+                            <select class="form-control" name="visibility">
+                                <option <?php if($value['visible'] == 1){echo "selected = \"selected\"";}?> value="1">Yes</option>
+                                <option <?php if($value['visible'] == 0){echo "selected = \"selected\"";}?> value="0">No</option>
+                            </select>
                         </td>
                         <td>
                             <!-- If item is not hidden add disabled  -->
@@ -161,11 +168,15 @@
                             </th>
                             <!-- Item Name -->
                             <td>
-                                <input class="form-control" name="item_name" value="" required>
+                                <input class="form-control" name="item_name" required>
                             </td>
                             <!-- Item Category -->
                             <td>
-                                <input class="form-control" name="category" value="" required>
+                            <select class="form-control" name="category">
+                                <option selected = "selected" value="Entree">Entree</option>
+                                <option value="Meals">Meals</option>
+                                <option value="Drinks">Drinks</option>
+                            </select>
                             </td>
                             <!-- Item Price -->
                             <td>
@@ -173,7 +184,7 @@
                                     <div class="input-group-prepend">
                                       <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text" class="form-control" name="price" value="" required>
+                                    <input type="text" class="form-control" name="price"  required>
                                   </div>
                             </td>
                             <!-- Item Image -->
@@ -181,15 +192,12 @@
                                 <img src="./images/basic.png" alt="..." class="img-fluid">
                             </td>
                             <!-- Item Image URL -->
-                            <td>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="validatedCustomFile"  name="imageURL" value="images/basic.png">
-                                    <label class="custom-file-label" for="validatedCustomFile">...</label>
-                                </div>
-                            </td>
+
                             <!-- Submit Button -->
                             <td colspan="2">
-                                <button name="editItem" value="4" type="submit" class="btn btn-block btn-success">Add</button>
+                                <button name="editItem" value="4" type="submit" class="btn btn-block btn-success">
+                                <input type="hidden" name="addItem">    
+                                Add</button>
                             </td>
                             
                           </tr>
