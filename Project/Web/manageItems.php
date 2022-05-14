@@ -18,10 +18,24 @@
 	$username="root";
 	$serverpw="";
 	$dbname="restaurant";
-
 	$conn = new mysqli($servername, $username, $serverpw, $dbname);
-    
 	if ($conn->connect_error) { die("connection failed"); }
+
+    //update db
+    if(isset($_POST['updateDB']))
+    {
+        $in = $_POST['itemname'];
+        $c = $_POST['category'];
+        $p = $_POST['price'];
+        $iu = $_POST['imageurl'];
+        $ii = $_POST['itemID'];
+        $sql = "update `item` set `ITEM NAME` = '$in', `CATEGORY` = '$c', `PRICE` = $p where `ITEM ID` = $ii";
+        $conn->query($sql);
+        $_POST['updateDB'] = "";
+    }
+    
+
+    //pull all items
     $sql = "select * from `item`";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) 
@@ -33,7 +47,9 @@
                   'visible' => $row["VISIBLE"]);
             }
     }
-	?>
+    ?>
+    
+
     <!-- Nav Bar -->
     <nav class="navbar navbar-light bg-light">
         <div class="container">
@@ -77,13 +93,14 @@
                 foreach($transArr as $key => $value)
                 {?>
                 <!-- Individual Row Item -->
-                <form action="manageItems" method="post">
+                <form action="manageItems.php" method="post" name="form">
                     <tr>
                         <!-- Item ID -->
                         <th scope="row"><?php echo $value['item id']?></th>
+                            <input type="hidden" name="itemID" value="<?php echo $value['item id']?>">
                         <!-- Item Name -->
                         <td>
-                            <input class="form-control" name="item_name" value="<?php echo $value['item name']?>" required />
+                            <input class="form-control" name="itemname" value="<?php echo $value['item name']?>" required />
                         </td>
                         <!-- Item Category -->
                         <td>
@@ -109,19 +126,20 @@
                         <td>
                             <!-- Add ID as value  -->
                             <!-- If item is hidden add disabled here -->
-                            <button name="deleteItem" value="1" type="submit" class="btn btn-danger" <?php if($value['visible'] == 0){echo $disabled = "disabled";}?>>
+                            <button name="deleteItem" type="submit" class="btn btn-danger" <?php if($value['visible'] == 0){echo $disabled = "disabled";}?>>
                                 Hide
                             </button>
                         </td>
                         <td>
                             <!-- If item is not hidden add disabled  -->
-                            <button name="editItem" value="1" type="submit" class="btn btn-success" <?php if($value['visible'] == 1){echo $disabled = "disabled";}?>>
+                            <button name="editItem" type="submit" class="btn btn-success" <?php if($value['visible'] == 1){echo $disabled = "disabled";}?>>
                                 Show
                             </button>
                         </td>
                         <td>
                             <!-- If item is not hidden add disabled  -->
-                            <button name="editItem" value="1" type="submit" class="btn btn-primary" >
+                            <button name="updateItem" type="submit" class="btn btn-primary">
+                                <input type="hidden" name="updateDB" value="update">
                                 Update
                             </button>
                         </td>
