@@ -74,7 +74,7 @@ INSERT INTO `coupon` (`MANAGER ID`,`COUPON CODE`,`DISCOUNT RATE`,`VALID`) VALUES
 drop table if exists `customer`;
 CREATE TABLE `customer` (
   `CUSTOMER ID` int(50) NOT NULL AUTO_INCREMENT,
-  `EMAIL` varchar(100) NOT NULL,
+  `EMAIL` varchar(100) NULL,
   `PASSWORD` varchar(100) NOT NULL,
   `CUSTOMER NAME` varchar(50) NOT NULL,
   `FAVOURITE LIST` varchar(500) NULL,
@@ -82,7 +82,7 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `customer` (`CUSTOMER ID`, `EMAIL`, `PASSWORD`, `CUSTOMER NAME`, `FAVOURITE LIST`) VALUES
-(1, 'hello@gmail.com', '+gOQ1hlzSkGFoVglB24ZHYGzMbTDmjWshisED6Csly79YDzXiXoltpG1DuMFweXw2LuJDXkPEycGTlo=', 'hello', ''),
+(1, NULL, '+gOQ1hlzSkGFoVglB24ZHYGzMbTDmjWshisED6Csly79YDzXiXoltpG1DuMFweXw2LuJDXkPEycGTlo=', 'guest', ''),
 (2, 'hello1@gmail.com', '0F8uEtIqRv9d+kqvlFW6+D6dvuQZDikhWgFb2/y5DKVSdVtZN0rQ+6+QRuS48svd00qDkLQaQmeMFDY=', 'helloo', ''),
 (3, 'customer@gmail.com', 'tVR62Ij0cieA/K9d5kZSMEnyLvfDO4gNYDqlW07290ygyE8G/5e1ssVi8XDdDrnWaHtHvXUT9vsbI5I=', 'customer', ''),
 (4, 'test@gmail.com', 'AUpe4Nx+zwqk8nSvzF52ReV18+hlOKg5khEElB0x9UM+4EGIs2w/b6/8HbvgBM729IxI9CUpL0b/6qc=', 'testing', ''),
@@ -301,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `TABLES ID` int(50) NOT NULL,
   `CUSTOMER ID` int(50) NOT NULL,
   `COUPON ID` int(50) NULL,
-  `STAFF ID` int(50) NOT NULL,
+  `STAFF ID` int(50) NULL,
   `STATUS` varchar(50) NOT NULL,
   `DATETIME` datetime NOT NULL,
   `TOTAL PRICE` decimal(10,2) NOT NULL,
