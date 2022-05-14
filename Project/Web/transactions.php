@@ -64,6 +64,7 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<span class="navbar-brand mb-0 h1">Makan Club Transactions</span>
+				<button onclick="window.location.href='home.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Back to Home</button>
 				<button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button> <!-- should we terminate session? -->
 			</div>
 		</nav>
@@ -81,7 +82,7 @@
 					$conn = new mysqli($servername, $username, $serverpw, $dbname);
 					if ($conn->connect_error) { die("connection failed"); }
 
-					$sql = "select * from transaction where `customer id` = 1"; //need to cast today's date into query for filter
+					$sql = "select * from transaction where `customer id` = 1 ORDER BY `transaction id` DESC"; //need to cast today's date into query for filter
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) 
 					{

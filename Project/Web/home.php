@@ -212,43 +212,47 @@
 					}
 			}
 
-      $total = 0;
-      if(isset($_SESSION['cart'])){
-      foreach($_SESSION['cart'] as $key => $value){
-        $query = mysqli_query($conn, "select * from `item` where `item id` = $key");
-    
-        foreach($query as $a){
-            $total += $value['qty']*$a["PRICE"];
-        }
-      }
-    }
-
-    
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
       if(isset($_POST['update_qty']))
       {
-        foreach($_SESSION['cart'] as $key => $value){
+        foreach($_SESSION['cart'] as $key => $value)
+        {
           $query = mysqli_query($conn, "select * from `item` where `item id` = $key");
       
-          foreach($query as $a){
+          foreach($query as $a)
+          {
             if($a["ITEM ID"]==$_POST['item_id'])
             {
               $id = $a["ITEM ID"];
               $_SESSION['cart'][$id] = array("pid"=>$id, "qty"=>$_POST['quantity']);
-              header("location:home.php");
+              //header("location:home.php");
             }
           }
         }
       }
     }
 
+    $total = 0;
+    if(isset($_SESSION['cart']))
+    {
+      foreach($_SESSION['cart'] as $key => $value)
+      {
+        $query = mysqli_query($conn, "select * from `item` where `item id` = $key");
+    
+        foreach($query as $a)
+        {
+            $total += $value['qty']*$a["PRICE"];
+        }
+      }
+    }
 
 		?>
     <div class="bg-dark p-3">
       <div class="row mx-0 py-3 bg-light rounded-3">
         <div class="">
           Order #88 <small class="text-muted"><span id='date-time'></small>
+          <button onclick="window.location.href='transactions.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Transaction History</button>
           <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:10%; margin:10px;" type="submit">Log Out</button>
 
           <div class="card mb-3 rounded-3">
@@ -467,7 +471,7 @@
                           <div class="row">
                               <div class="col-xs-7 col-md-7">
                                   <div class="form-group">
-                                      <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                      <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span> DATE</label>
                                       <input 
                                           type="tel" 
                                           class="form-control" 
