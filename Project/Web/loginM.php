@@ -137,18 +137,7 @@
     </style>
   </head>
   <body oncontextmenu="return false" class="snippet-body">
-	<?php
-		$servername="localhost";
-    $username="root";
-    $serverpw="";
-    $dbname="restaurant";
-    $dbtable="manager";
 
-		$conn = new mysqli($servername, $username, $serverpw, $dbname);
-		if ($conn->connect_error) { die("connection failed"); }
-
-
-	?>
     <div class="container mt-5">
       <div class="row d-flex justify-content-center">
       <div class="banner">
@@ -182,7 +171,7 @@
 					</fieldset>
           <?php
           include ("function.php");
-
+          require_once "Controller/ManagerController.php";
 						if ( isset ($_POST["login"])) //check if login button is clicked
 						{
 							function test_input($data) {
@@ -195,34 +184,16 @@
               $username = test_input($_POST["username"]);
               $password = test_input($_POST["password"]);
 
-
+              $mc = new ManagerController($username);
 							if(!empty($username) && !empty($password)) //check if input is empty
 							{
-                $sql = "SELECT PASSWORD FROM manager WHERE USERNAME = '$username'";
-                $result = $conn->query($sql);
-                $password_db = "";
-                if ($result->num_rows > 0) 
-                {
-                  while($row = $result->fetch_assoc()) 
-                  {
-                    $password_db = $row["PASSWORD"];
-                  }
-                }
-
-                // $query = $conn->prepare("select password from manager WHERE username = ?");
-                // $query->bind_param('s', $username);
-                // $query->execute();
-                // $query->bind_result($verifypassword);
-                // $query->fetch(); //fetch query
-                // $query->close(); //close query
-
-                //$decryptytext = str_decryptaesgcm($verifypassword, $password, "base64");
-                if ($password == $password_db) //check if both matches
+                
+                if ($mc->validateUser($username,$password)) //check if both matches
                 {
                    ?>
                     <script type="text/javascript">
                     alert("Successfully logged in. Redirecting to MakanClub Manager page");
-                   window.location.href = "manageOrder.php";
+                   window.location.href = "manageItems.php";
                    </script>
                 <?php
                 }

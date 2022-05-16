@@ -10,14 +10,7 @@
 	</head>
 	<body>
 	<?php
-	//db connection initialise
-	$servername="localhost";
-	$username="root";
-	$serverpw="";
-	$dbname="restaurant";
-
-	$conn = new mysqli($servername, $username, $serverpw, $dbname);
-	if ($conn->connect_error) { die("connection failed"); }
+	require_once "Controller/TransactionController.php";
 	?>
 		<script type="text/javascript">
 			function completeOrder(orderID) {
@@ -43,9 +36,9 @@
 					<?php
 					if(isset($_POST['cID']))
 					{
-						$temp = $_POST['cID'];
-						$sql = "update transaction set status = 'COMPLETED' where `transaction id` = $temp";
-						$conn->query($sql);
+						$id = $_POST['cID'];
+						$tc = new TransactionController();
+						$tc->setOrder($id);
 					}
 					?>
 			}
@@ -142,16 +135,9 @@
 					</div>
 					<div id="activeOrdersContainer" class="row">
 						<?php
-							$sql = "select * from transaction where date(datetime) = '2022-05-01' and status = 'PENDING'"; //select * from transaction where date(datetime) = date(now())
-							$result = $conn->query($sql);
-							if ($result->num_rows > 0) 
-							{
-								while ($row=$result->fetch_assoc())
-									{
-										$transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
-									}
-							}
-							//print_r($transArr); //test array set
+							$tc = new TransactionController();
+							$transArr = $tc->getPendingList();
+						
 						?>
 						<?php
 						function str_after($str, $search)
@@ -179,15 +165,7 @@
 											<hr>
 											<?php 
 												$id = strval($value['transaction id']);
-												$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
-												$result = $conn->query($sql);
-												if ($result->num_rows > 0) 
-												{
-													while ($row=$result->fetch_assoc())
-														{
-															$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
-														} 
-												} 
+												$cartArr = $tc->getCartItems($id);
 												if (!empty($cartArr))
 												{
 													foreach($cartArr as $k => $v)
@@ -226,16 +204,8 @@
 					</div>
 					<div id="activeOrdersContainer" class="row">
 						<?php
-							$sql = "select * from transaction where date(datetime) = '2022-05-01' and status = 'COMPLETED'"; //select * from transaction where date(datetime) = date(now())
-							$result = $conn->query($sql);
-							if ($result->num_rows > 0) 
-							{
-								while ($row=$result->fetch_assoc())
-									{
-										$transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
-									}
-							}
-							//print_r($transArr); //test array set
+							$tc = new TransactionController();
+							$transArr = $tc->getCompletedList();
 						?>
 						<?php
 						function str_after($str, $search)
@@ -263,15 +233,7 @@
 											<hr>
 											<?php 
 												$id = strval($value['transaction id']);
-												$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
-												$result = $conn->query($sql);
-												if ($result->num_rows > 0) 
-												{
-													while ($row=$result->fetch_assoc())
-														{
-															$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
-														} 
-												} 
+												$cartArr = $tc->getCartItems($id);
 												if (!empty($cartArr))
 												{
 													foreach($cartArr as $k => $v)

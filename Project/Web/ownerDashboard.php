@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <body>
     <?php
+        require 'Controller/Ownercontroller.php';
         //db connection initialise
         $servername="localhost";
         $username="root";
@@ -21,6 +22,7 @@
 
         $conn = new mysqli($servername, $username, $serverpw, $dbname);
         if ($conn->connect_error) { die("connection failed"); }
+        $oc = new OwnerController("joemama");
     ?>
     <nav class="navbar navbar-light bg-light">
         <div class="container">
@@ -30,8 +32,7 @@
 	</nav>
     <!-- get top 3 -->
     <?php
-        $sql = "select cartitem.`ITEM ID`, sum(cartitem.QUANTITY) as total, item.`ITEM NAME` from cartitem join item on cartitem.`ITEM ID` = item.`ITEM ID` group by `ITEM ID` order by total desc limit 3";
-        $result = $conn->query($sql);
+        $result = $oc->printData(4);
         if ($result->num_rows > 0) 
             {
                 while ($row=$result->fetch_array())
@@ -45,13 +46,8 @@
     ?>
     <!-- get accounts -->
     <?php
-        $sql = "select
-        A.count, B.count 
-        from 
-        (select count(*) as count from transaction ) A, 
-        (select count(*) as count from transaction where `CUSTOMER ID` = 1) B
-        ";
-        $result = $conn->query($sql);
+
+        $result = $oc->printData(1);
         if ($result->num_rows > 0) 
             {
                 while ($row=$result->fetch_array())
@@ -64,8 +60,7 @@
     ?>
     <!-- get avg transaction per day last 30 days -->
     <?php
-        $sql = "select DATE(DATETIME)as date, AVG (`TOTAL PRICE`) from transaction group by date order by date;";
-        $result = $conn->query($sql);
+        $result = $oc->printData(2);
         if ($result->num_rows > 0) 
             {
                 while ($row=$result->fetch_array())
@@ -78,8 +73,7 @@
     ?>
     <!-- get transaction per day last 30 days -->
     <?php
-        $sql = "select DATE(DATETIME)as date, count(`transaction ID`) from transaction group by date order by date;";
-        $result = $conn->query($sql);
+        $result = $oc->printData(3);
         if ($result->num_rows > 0) 
             {
                 while ($row=$result->fetch_array())

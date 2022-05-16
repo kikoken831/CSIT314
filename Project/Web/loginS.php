@@ -137,17 +137,7 @@
     </style>
   </head>
   <body oncontextmenu="return false" class="snippet-body">
-	<?php
-		$servername="localhost";
-    $username="root";
-    $serverpw="";
-    $dbname="restaurant";
-    $dbtable="staff";
 
-		$conn = new mysqli($servername, $username, $serverpw, $dbname);
-		if ($conn->connect_error) { die("connection failed"); }
-
-	?>
     <div class="container mt-5">
       <div class="row d-flex justify-content-center">
       <div class="banner">
@@ -181,7 +171,7 @@
 					</fieldset>
           <?php
           include ("function.php");
-
+          require_once 'Controller/StaffController.php';
 						if ( isset ($_POST["login"])) //check if login button is clicked
 						{
 							function test_input($data) {
@@ -193,34 +183,19 @@
               
               $username = test_input($_POST["username"]);
               $password = test_input($_POST["password"]);
-
+              
+              $sc = new StaffController($username);
+              
 							if(!empty($username) && !empty($password)) //check if input is empty
 							{
-                $sql = "SELECT PASSWORD FROM staff WHERE USERNAME = '$username'";
-                $result = $conn->query($sql);
-                $password_db = "";
-                if ($result->num_rows > 0) 
-                {
-                  while($row = $result->fetch_assoc()) 
-                  {
-                    $password_db = $row["PASSWORD"];
-                  }
-                }
-
-                // $query = $conn->prepare("select password from staff WHERE username = ?");
-                // $query->bind_param('s', $username);
-                // $query->execute();
-                // $query->bind_result($verifypassword);
-                // $query->fetch(); //fetch query
-                // $query->close(); //close query
-
-                //$decryptytext = str_decryptaesgcm($verifypassword, $password, "base64");
-                if ($password == $password_db) //check if both matches
+                
+                
+                if ($sc->validateStaff($username,$password)) //check if both matches
                 {
                    ?>
                     <script type="text/javascript">
                     alert("Successfully logged in. Redirecting to MakanClub Staff page");
-                   window.location.href = "manageOrder.php";
+                   window.location.href = "manageOrders.php";
                    </script>
                 <?php
                 }
@@ -288,29 +263,7 @@
       },
 
       methods:{
-        
-      // validate : function(){
-      // this.emailBlured = true;
-      // this.passwordBlured = true;
-      // if( this.validEmail(this.email) && this.validPassword(this.password)){
-      // this.valid = true;
-      // }
-      // },
 
-      // validEmail : function(email) {
-
-      // var re = /(.+)@(.+){2,}\.(.+){2,}/;
-      // if(re.test(email.toLowerCase())){
-      // return true;
-      // }
-
-      // },
-
-      // validPassword : function(password) {
-      // if (password.length > 7) {
-      // return true;
-      // }
-      // },
 
       submit : function(){
       this.validate();

@@ -13,63 +13,38 @@
 
 <body>
     <?php
-	//db connection initialise
-	$servername="localhost";
-	$username="root";
-	$serverpw="";
-	$dbname="restaurant";
+    require_once 'Controller/CouponController.php';
+	
+    $cc = new CouponController();
 
-	$conn = new mysqli($servername, $username, $serverpw, $dbname);
-    
-	if ($conn->connect_error) { die("connection failed"); }
-    
     if(isset($_POST['updateCoupon']))
     {
-        $ii = $_POST['id'];
-        $in = $_POST['code'];
-        $mn = $_POST['name'];
-        $dr = $_POST['rate'];
-        $v = $_POST['valid'];
-        $sql = "select `manager id` from `manager` where `name` = '$mn' limit 1";
-        $result = $conn->query($sql);
-        $mid;
-        while($row = $result->fetch_assoc()) {
-            $mid = $row['manager id'];
-        }
-        $sql = "update `coupon` set `COUPON CODE` = '$in', `MANAGER ID` = $mid, `DISCOUNT RATE` = $dr , `VALID` = $v where `COUPON ID` = $ii";
-        $conn->query($sql);
+        $id = $_POST['id'];
+        $Coupon_Code = $_POST['code'];
+        $manager_name = $_POST['name'];
+        $Discount_rate = $_POST['rate'];
+        $valid = $_POST['valid'];
+        
+        $cc->updateCoupons($id,$Coupon_Code,$manager_name,$Discount_rate,$valid);
+        
         $_POST['updateCoupon'] = "";
+        $page = $_SERVER['PHP_SELF'];
+        echo '<meta http-equiv="Refresh" content="0;' . $page . '">'; 
     }
 
 
     if(isset($_POST['addCoupon']))
     {
-        $c = $_POST['code'];
-        $dr = $_POST['rate'];
+        $Coupon_Code = $_POST['code'];
+        $Discount_rate = $_POST['rate'];
         $mn = $_POST['name'];
-        $sql = "select `manager id` from `manager` where `name` = '$mn' limit 1";
-        $result = $conn->query($sql);
-        $mid;
-        while($row = $result->fetch_assoc()) {
-            $mid = $row['manager id'];
-        }
-        $sql = "INSERT INTO `COUPON` ( `COUPON CODE`, `MANAGER ID`, `DISCOUNT RATE`, `VALID`) VALUES
-        ('$c', $mid, $dr, 1)";
-        $conn->query($sql);
+        $cc->addCoupons($Coupon_Code,$mn,$Discount_rate);
         $_POST['addItem'] = "";
+        $page = $_SERVER['PHP_SELF'];
+        echo '<meta http-equiv="Refresh" content="0;' . $page . '">'; 
     }
-    $sql = "select `coupon`.`COUPON ID`,`coupon`.`COUPON CODE`,`manager`.NAME,`coupon`.`DISCOUNT RATE`,`coupon`.VALID
-    from `coupon` INNER JOIN `manager` ON `manager`.`MANAGER ID` = `coupon`.`MANAGER ID`";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) 
-    {
-        while ($row=$result->fetch_assoc())
-            {
-                $arr[] = array('id' => $row["COUPON ID"],'code' => $row["COUPON CODE"], 'name'
-                 => $row["NAME"], 'discount rate' => $row["DISCOUNT RATE"],
-                  'valid' => $row["VALID"]);
-            }
-    }
+
+    $arr = $cc->getCoupons();
 	?>
     <!-- Nav Bar -->
     <nav class="navbar navbar-light bg-light">

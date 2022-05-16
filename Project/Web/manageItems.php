@@ -13,51 +13,39 @@
 
 <body>
     <?php
-	//db connection initialise
-	$servername="localhost";
-	$username="root";
-	$serverpw="";
-	$dbname="restaurant";
-	$conn = new mysqli($servername, $username, $serverpw, $dbname);
-	if ($conn->connect_error) { die("connection failed"); }
+    require_once 'Controller/ItemController.php';
 
+
+    $ic = new ItemController();
+   
     //update db
     if(isset($_POST['updateDB']))
     {
-        $in = $_POST['itemname'];
-        $c = $_POST['category'];
-        $p = $_POST['price'];
-        $ii = $_POST['itemID'];
-        $vs = $_POST['visibility'];
-        $sql = "update `item` set `ITEM NAME` = '$in', `CATEGORY` = '$c', `PRICE` = $p , `VISIBLE` = $vs where `ITEM ID` = $ii";
-        $conn->query($sql);
+        $itemName = $_POST['itemname'];
+        $category = $_POST['category'];
+        $price = $_POST['price'];
+        $id = $_POST['itemID'];
+        $vis = $_POST['visibility'];
+        $ic->updateItem($id,$itemName,$category,$price,$vis);
         $_POST['updateDB'] = "";
+        $page = $_SERVER['PHP_SELF'];
+        echo '<meta http-equiv="Refresh" content="0;' . $page . '">';   
     }
 
 
     if(isset($_POST['addItem']))
     {
-        $in = $_POST['item_name'];
-        $c = $_POST['category'];
-        $p = $_POST['price'];
-        $sql = "INSERT INTO `item` ( `ITEM NAME`, `CATEGORY`, `PRICE`, `IMAGEURL`, `VISIBLE`) VALUES
-        ( '$in', '$c', $p, 'images/basic.png', 1)";
-        $conn->query($sql);
+        $itemName = $_POST['item_name'];
+        $category = $_POST['category'];
+        $price = $_POST['price'];
+        $ic->addItem($itemName,$category,$price);
         $_POST['addItem'] = "";
+        $page = $_SERVER['PHP_SELF'];
+        echo '<meta http-equiv="Refresh" content="0;' . $page . '">';   
     }
 
     //pull all items
-    $sql = "select * from `item`";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) 
-    {
-        while ($row=$result->fetch_assoc())
-            {
-                $transArr[] = array('item id' => $row["ITEM ID"],'item name' => $row["ITEM NAME"], 'category'
-                 => $row["CATEGORY"], 'price' => $row["PRICE"], 'imageurl' => $row["IMAGEURL"],
-                  'visible' => $row["VISIBLE"]);
-            }
-    }
+    $transArr = $ic->getitems();
 
 
     ?>

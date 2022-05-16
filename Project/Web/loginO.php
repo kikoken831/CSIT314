@@ -138,6 +138,8 @@
   </head>
   <body oncontextmenu="return false" class="snippet-body">
 	<?php
+    require 'Controller/OwnerController.php';
+    
 		$servername="localhost";
     $username="root";
     $serverpw="";
@@ -197,31 +199,13 @@
 
 							if(!empty($username) && !empty($password)) //check if input is empty
 							{
-                $sql = "SELECT PASSWORD FROM owner WHERE USERNAME = '$username'";
-                $result = $conn->query($sql);
-                $password_db = "";
-                if ($result->num_rows > 0) 
-                {
-                  while($row = $result->fetch_assoc()) 
-                  {
-                    $password_db = $row["PASSWORD"];
-                  }
-                }
-
-                // $query = $conn->prepare("select password from owner WHERE username = ?");
-                // $query->bind_param('s', $username);
-                // $query->execute();
-                // $query->bind_result($verifypassword);
-                // $query->fetch(); //fetch query
-                // $query->close(); //close query
-
-                //$decryptytext = str_decryptaesgcm($verifypassword, $password, "base64");
-                if ($password == $password_db) //check if both matches
+                $oc = new OwnerController($username);
+                if ($oc->validateUser($username,$password))//check if both matches
                 {
                    ?>
                     <script type="text/javascript">
                     alert("Successfully logged in. Redirecting to MakanClub Owner page");
-                   window.location.href = "manageOrder.php";
+                   window.location.href = "ownerDashboard.php";
                    </script>
                 <?php
                 }

@@ -64,7 +64,6 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<span class="navbar-brand mb-0 h1">Makan Club Transactions</span>
-				<button onclick="window.location.href='home.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Back to Home</button>
 				<button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button> <!-- should we terminate session? -->
 			</div>
 		</nav>
@@ -74,23 +73,11 @@
 			<hr>
 			<div id="activeOrdersContainer" class="row">
 				<?php //db pulls
-					$servername="localhost";
-					$username="root";
-					$serverpw="";
-					$dbname="restaurant";
 
-					$conn = new mysqli($servername, $username, $serverpw, $dbname);
-					if ($conn->connect_error) { die("connection failed"); }
-
-					$sql = "select * from transaction where `customer id` = 1 ORDER BY `transaction id` DESC"; //need to cast today's date into query for filter
-					$result = $conn->query($sql);
-					if ($result->num_rows > 0) 
-					{
-						while ($row=$result->fetch_assoc())
-							{
-								$transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
-							}
-					}
+					require_once 'Controller/TransactionController.php';
+					$id = 1; //IMPLEMENT ONCE SESSION IS DONE
+					$tc = new TransactionController();
+					$transArr = $tc->getOrderHistory($id);
 					//print_r($transArr); //test array set
 				?>
 				<?php
@@ -116,15 +103,8 @@
 									<hr>
 									<?php 
 										$id = strval($value['transaction id']);
-										$sql = "select * from cartitem join item on cartitem.`item id` = item.`item id` where cartitem.`transaction id`= $id";
-										$result = $conn->query($sql);
-										if ($result->num_rows > 0) 
-										{
-											while ($row=$result->fetch_assoc())
-												{
-													$cartArr[] = array('item id' => $row["ITEM ID"], 'quantity' => $row["QUANTITY"], 'item name' => $row["ITEM NAME"], 'price' => $row["PRICE"]);
-												} 
-										} 
+										
+										$cartArr = $tc->getCartItems($id);
 										if (!empty($cartArr))
 										{
 											foreach($cartArr as $k => $v)
