@@ -147,7 +147,7 @@
 		$conn = new mysqli($servername, $username, $serverpw, $dbname);
 		if ($conn->connect_error) { die("connection failed"); }
 
-
+    $_SESSION['cusID']=2;
 	?>
     <div class="container mt-5">
       <div class="row d-flex justify-content-center">
@@ -155,33 +155,44 @@
 	<div class="container">
   <h6 style="text-align:center">Welcome to Makan Club Restaurant POS system!</h6>
 		<div class="banner-main">
-				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="register-form" autocomplete="off" align="center" onsubmit="return validateRegistrationForm()">
+				<form action="login.php" method="post" id="register-form" autocomplete="off" align="center" onsubmit="return validateRegistrationForm()">
 				
 
 				<div id="form-content">
 					<fieldset>
-
+            <div class="fieldgroup">
+              <label for="tableNum">Table No : </label>
+                <select name="tableNum" id="tableNum" required>
+                  <script>
+                    for(var i=1; i<=20; i++)
+                    {
+                      document.write("<option value=\""+i+"\">"+i+"</option>");
+                    }
+                  </script>
+                </select>
+            </div>
 						<div class="fieldgroup">
-							<label for="email">Email : </label><input name="email" type="text"
-								id="email" maxlength="50" required>
+							<label for="email">Email : </label>
+              <input name="email" type="text" id="email" maxlength="50">
 						</div>
 
 						<div class="fieldgroup">
-							<label for="password">Password : </label><input name="password"
-								type="password" id="password" required>
+							<label for="password">Password : </label><input name="password" type="password" id="password">
 						</div>
 
 						<div class="fieldgroup">
 							<div class="loginbutton">
-								<input type="submit" value="Login" class="submit"
-									name="login" id="loginbutton" align="center">
+								<input type="submit" value="Login" class="submit" name="login" id="loginbutton" align="center">
 							</div>
 						</div>
-
+            <div class="fieldgroup">
+								<input type="submit" value="Login as Guest" class="submit"
+									name="guest" id="guest" align="center">
+						</div>
 					</fieldset>
           <?php
           include ("function.php");
-
+          //require_once"Controller/CustomerController.php";
 						if ( isset ($_POST["login"])) //check if login button is clicked
 						{
 							function test_input($data) {
@@ -214,7 +225,7 @@
                         ?>
                         <script type="text/javascript">
                         alert("Successfully logged in. Redirecting to MakanClub menu page");
-                        window.location.href = "home.php";
+                        window.location.href = "home.php?cusID="+"<?php echo $_SESSION['cusID']?>"+"&tableNum="+"<?php echo $_POST['tableNum']?>"; //TO PASS in actual CUSTOMER ID into url, currently set to 1
                         </script>
                       <?php
 											}
@@ -257,8 +268,15 @@
 										</script>
 									<?php
 								}
-							}
-            
+						}
+            if ( isset ($_POST["guest"])) //check if guest button is clicked
+            {?>
+              <script type="text/javascript">
+                alert("Successfully logged in as Guest. Redirecting to MakanClub menu page");
+                window.location.href = "home.php?cusID=1&tableNum="+"<?php echo $_POST['tableNum']?>";
+              </script>
+              <?php
+            }
 						?>
 
 
