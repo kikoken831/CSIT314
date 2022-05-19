@@ -807,3 +807,71 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+DROP table if exists `applicant`;
+CREATE TABLE IF NOT EXISTS `applicant` (
+  `APPLICANT_ID` int(20) NOT NULL AUTO_INCREMENT,
+  `USERNAME` varchar(20) NOT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `NAME` varchar(30) NOT NULL,
+  `EMAIL` varchar(30) NOT NULL,
+  `Number` varchar(50) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Education` varchar(30) NOT NULL,
+  `YOE` int(20) NOT NULL,
+  `COUNTRY` varchar(30) NOT NULL,
+  `STATE` varchar(30) NOT NULL,
+  `curr_Role` varchar(30) NOT NULL,
+  PRIMARY KEY(`APPLICANT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP table if exists `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `Admin_ID` int(20) NOT NULL AUTO_INCREMENT,
+  `USERNAME` varchar(20) NOT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `NAME` varchar(30) NOT NULL,
+
+  PRIMARY KEY(`Admin_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP table if exists `job`;
+CREATE TABLE IF NOT EXISTS `job`(
+  `JOB_ID` int(20) NOT NULL AUTO_INCREMENT,
+  `Admin_ID` int(20) NULL,
+  `Company` varchar(25) NOT NULL,
+  `job_title` varchar(25) NOT NULL,
+  `job_desc` varchar(100) NOT NULL,
+  PRIMARY KEY(`JOB_ID`)
+ );
+ INSERT INTO `job` ( `Admin_ID`,`Company`,`job_title`,`job_desc`) VALUES
+
+(1,'Amazon','HelpDesk Engineer', 'just some job description'),
+(1,'Netflix','Software Engineer', 'just some job description'),
+(1,'Netflix','Database Admin', 'just some job description'),
+(1,'Netflix','Data Analyst', 'just some job description'),
+(1,'Netflix','Java Developer', 'just some job description'),
+(1,'Netflix','Devops in Test', 'just some job description'),
+(1,'Netflix','HelpDesk Engineer', 'just some job description');
+ 
+ 
+
+ Drop table if exists `jobapplicant`;
+ CREATE TABLE IF NOT EXISTS `jobapplicant`(
+   `ID` int(20) NOT NULL AUTO_INCREMENT,
+   `JOB_ID` int(20) NOT NULL,
+   `Applicant_ID` int(20) NOT NULL,
+
+   PRIMARY KEY(`ID`)
+ );
+
+ select job.Company, job.job_title,applicant.name,applicant.email,applicant.yoe,applicant.education,applicant.curr_Role,applicant.COUNTRY
+ from job
+ join jobapplicant
+ on job.job_id = jobapplicant.job_id
+ join applicant
+ on jobapplicant.applicant_id = applicant.applicant_id
+ where admin_id = 1;

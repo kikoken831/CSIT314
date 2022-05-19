@@ -212,13 +212,9 @@
 									{
 										if (check_password($password))
 										{
-                      $query = $conn->prepare("select password from customer WHERE email = ?");
-                      $query->bind_param('s', $email);
-                      $query->execute();
-                      $query->bind_result($verifypassword);
-                      $query->fetch(); //fetch query
-                      $query->close(); //close query
-
+                      require "Controller/CustomerController.php";
+                      $cc = new CustomerController($email);
+                      $verifypassword = $cc->getPwd();
                       $decryptytext = str_decryptaesgcm($verifypassword, $password, "base64");
 											if ($decryptytext == "makanClub2022pw") //check if both matches
 											{
