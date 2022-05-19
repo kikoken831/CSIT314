@@ -21,7 +21,7 @@ class Customer{
                 while($row = $result->fetch_assoc()) 
                 {
                     $this->id = $row["CUSTOMER ID"];
-                    $this->password = $row["PASSWORD"];
+                    $this->psw = $row["PASSWORD"];
                 }
             }
         
@@ -37,7 +37,7 @@ class Customer{
         return $this->id;
     }
 
-    public function getPassword()
+    public function getPwd()
     {
         return $this->psw;
     }

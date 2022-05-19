@@ -137,18 +137,7 @@
     </style>
   </head>
   <body oncontextmenu="return false" class="snippet-body">
-	<?php
-		$servername="localhost";
-    $username="root";
-    $serverpw="";
-    $dbname="restaurant";
-    $dbtable="customer";
 
-		$conn = new mysqli($servername, $username, $serverpw, $dbname);
-		if ($conn->connect_error) { die("connection failed"); }
-
-    $_SESSION['cusID']=2;
-	?>
     <div class="container mt-5">
       <div class="row d-flex justify-content-center">
       <div class="banner">
@@ -191,7 +180,7 @@
 						</div>
 					</fieldset>
           <?php
-          include ("function.php");
+          require_once ("function.php");
           //require_once"Controller/CustomerController.php";
 						if ( isset ($_POST["login"])) //check if login button is clicked
 						{
@@ -214,13 +203,15 @@
 										{
                       require "Controller/CustomerController.php";
                       $cc = new CustomerController($email);
-                      $verifypassword = $cc->getPwd();
-                      $decryptytext = str_decryptaesgcm($verifypassword, $password, "base64");
-											if ($decryptytext == "makanClub2022pw") //check if both matches
+                     
+											if ($cc->validateLogin($password)) //check if both matches
 											{
                         ?>
                         <script type="text/javascript">
                         alert("Successfully logged in. Redirecting to MakanClub menu page");
+                        <?php
+                        $_SESSION['cusID']=$cc->getId();
+                        ?>
                         window.location.href = "home.php?cusID="+"<?php echo $_SESSION['cusID']?>"+"&tableNum="+"<?php echo $_POST['tableNum']?>"; //TO PASS in actual CUSTOMER ID into url, currently set to 1
                         </script>
                       <?php
