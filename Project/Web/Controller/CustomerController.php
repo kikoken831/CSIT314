@@ -1,5 +1,6 @@
 <?php
 require 'Entity/Customer.php';
+require_once 'function.php';
 class CustomerController{
     private Customer $c;
 
@@ -9,21 +10,21 @@ public function __construct($username){
 }
 
 
-public function validateLogin($email,$password) : bool
+public function validateLogin($password)
 {
-    $pe = $this->c->getPassword();
-    $passworddec = str_decryptaesgcm($pe,$p, "base64");
-    if($passworddec == "makanClub2022pw"){
-        return TRUE;
+    $verifypassword = $this->c->getPwd();
+    $decryptytext = str_decryptaesgcm($verifypassword, $password, "base64");
+
+    if($decryptytext == "makanClub2022pw")
+    {
+        return True;
     }
     else{
-        return FALSE;
+        return False;
     }
 }
-
-
 public function getId()
 {
-    $this->c->getID();
+    return $this->c->getID();
 }
 }
