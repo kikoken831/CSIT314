@@ -9,7 +9,7 @@ public function __construct($username){
 }
 
 
-public function validateUser($email,$password) : bool
+public function validateLogin($email,$password) : bool
 {
     $pe = $this->c->getPassword();
     $passworddec = str_decryptaesgcm($pe,$p, "base64");
