@@ -10,7 +10,7 @@
     else{
       $_SESSION['cart'][$id] = array("pid"=>$id, "qty"=>$_POST['quantity']);
     }
-    header("location:home.php");
+
   }
 
   if(isset($_GET['remove'])){
