@@ -23,6 +23,9 @@
     unset($_SESSION['cart']);
   }
 
+ 
+  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,7 +165,7 @@
       <div class="row mx-0 py-3 bg-light rounded-3">
         <div class="">
           Order #88 <small class="text-muted"><span id='date-time'></small>
-          <button onclick="window.location.href='transactions.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Transaction History</button>
+          <button onclick="window.location.href='transactionHistory.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Transaction History</button>
           <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:10%; margin:10px;" type="submit">Log Out</button>
 
           <div class="card mb-3 rounded-3">
@@ -366,7 +369,7 @@
             </div>     
             <br>   
           <div class="payment">
-        <form id="form">
+        <form id="form" method="post">
             <div class="form-group owner">
                 <label for="owner">Full Name</label>
                 <input type="text" class="form-control" id="fullname" placeholder="John Tan" onblur="validate()">
@@ -411,16 +414,104 @@
             <br>
             <div class="form-group" id="coupon-field">
                 <label for="coupon">Promo Code</label>
-                <input type="text" class="form-control" id="coupon">
+                <input type="text" class="form-control" id="coupon" onblur="checkPromo()">
                 <span id="coupon-result"></span>
             </div>
             <br>
+            <div class="form-group" id="subtotal">
+                <span style="float:left">Sub-Total: </span><span style="float:right">$<?php echo number_format($total, 2);?></span><br>
+                <span style="float:left">Promo Code: </span><span style="float:right" id="discount">-</span><br>
+                <span style="float:left">Grand Total: </span><span style="float:right"><input type="text" name="grandtotal" id="grandtotal" value="$<?php echo number_format($total, 2);?>" style="border:0 none; text-align:right" readonly></span><br>
+            </div>
+            <br>
             <div class="form-group" id="pay-now">
-                <button type="submit" class="btn btn-default btn-success" id="confirm-purchase" disabled="disabled">Order</button>
+                <button type="submit" class="btn btn-default btn-success" name="order" id="confirm-purchase" disabled="disabled">Order</button>
             </div>
         </form>
-    </div>
-          
+        
+        
+        <?php
+          $servername="localhost";
+          $username="root";
+          $serverpw="";
+          $dbname="restaurant";
+          $dbtable="transaction";
+
+          $conn = new mysqli($servername, $username, $serverpw, $dbname);
+          if ($conn->connect_error) { die("connection failed"); }
+          //print_r($menuArr); //test array set
+        ?>
+         <?php
+             if (isset ($_POST["order"])){
+
+                $couponid = $_SESSION['couponid'];        
+                $tableid = $_SESSION['tableid'];
+                $customerid = $_SESSION['cusID'];
+
+                $grandtotal = $_POST["grandtotal"];
+                $grandtotal = floatval(ltrim($grandtotal, '$'));
+
+                $query=$conn->prepare("select max(`TRANSACTION ID`) from transaction where 1"); 
+                $query->execute(); //execute query
+                $query->bind_result($transactionid);
+                $query->fetch(); //fetch query
+                $query->close(); //close query
+                
+                if($transactionid !="")
+                {
+                  $transactionid = $transactionid + 1;
+
+                  $query = $conn->prepare("INSERT INTO transaction (`TRANSACTION ID`, `TABLES ID`, `CUSTOMER ID`, `COUPON ID`, `STAFF ID`, `STATUS`, `DATETIME`, `TOTAL PRICE`) VALUES (?,?,?,?,NULL,'PENDING',now(),?)"); //insert into database
+                  $query->bind_param('iiiid', $transactionid, $tableid, $customerid, $couponid, $grandtotal); //bind parameters
+                        
+                  if ($query->execute()) //execute query
+                  {
+                    foreach($_SESSION['cart'] as $key => $value){
+                    $query = mysqli_query($conn, "select * from `item` where `item id` = $key");
+                      
+                      foreach($query as $a){
+                      $product_qty = $value["qty"];
+                      $itemid = $a["ITEM ID"];
+
+                      $query = $conn->prepare("INSERT INTO cartitem (`TRANSACTION ID`, `ITEM ID`, `QUANTITY`) VALUES (?,?,?)"); //insert into database
+                      $query->bind_param('iii', $transactionid, $itemid, $product_qty); //bind parameters
+                      $query->execute();
+                      }
+                    }
+                    unset($_SESSION['cart']);
+                    ?>
+                      <script type="text/javascript">
+                      alert("Your order has been sent to the kitchen.");
+                      window.location.href = "transactionHistory.php"; 
+                      </script>
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                       <script type="text/javascript">
+                       alert("Please contact the support team.");
+                      window.location.href = "home.php"; 
+                      </script>
+                    <?php
+                  }
+                }
+                else
+                {
+                  ?>
+                      <script type="text/javascript">
+                      alert("Please contact the support team.");
+                      window.location.href = "home.php"; 
+                      </script>
+                    <?php
+                }
+            }
+
+          ?>
+
+
+      </div>
+        
           </div>
         <div class="modal-footer text-center"></div>
 
@@ -461,23 +552,20 @@
         }
 
         function validate(){
-          var valid = true;
-          valid = checkFullName($("#fullname"));
-          valid = valid + checkCVV($("#cvv"));
-          valid = valid + valid + checkCardNum($("#cardnum"));
-          
-          if(valid) {
-            $("confirm-purchase").attr("disabled",false);
+          validFullName = checkFullName($("#fullname"));
+          validCVV = checkCVV($("#cvv"));
+          validCardNum = checkCardNum($("#cardnum"));
+
+
+          if(validFullName && validCVV && validCardNum) {
+            $("#confirm-purchase").attr("disabled",false);
           }
           else{
             $("#confirm-purchase").attr("disabled",true);
-            document.write(valid);
-
           }
         }
 
         function checkFullName(obj) {
-          var result = true;
           var fullname_regex = /^[A-Za-z.-]+(\s*[A-Za-z.-]+)*$/;
           result = fullname_regex.test($(obj).val());
           
@@ -492,11 +580,9 @@
             $('#fullname').css('border-color', '');
             return true;
           }
-          return result;	
         }
 
         function checkCVV(obj) {
-          var result = true;
          var cvv_regex = /^\d{3}$/;
          result = cvv_regex.test($(obj).val());
          
@@ -511,11 +597,9 @@
            $('#cvv').css('border-color', '');
            return true;
          }
-         return result;	
        }
 
        function checkCardNum(obj) {
-        var result = true;
          var cardnum_regex = /\b\d{4}[ -]?\d{4}[ -]?\d{4}[ -]?\d{4}\b/;
          result = cardnum_regex.test($(obj).val());
          
@@ -530,12 +614,43 @@
            $('#cardnum').css('border-color', '');
            return true;
          }
-         return result;	
        }
+
+       function checkPromo()
+       {
+        var coupon = document.getElementById("coupon").value;
+        
+        if (coupon == "")
+        {
+          $("#coupon-result").html("");
+        }
+        else
+        {
+          $.post('promocheck.php', {'coupon':coupon}, function(data) {
+            $("#coupon-result").html(data);
+
+            });
+            $('#coupon').css('border-color', '');
+
+            var discRate = <?php if(isset($_SESSION['discRate'])){echo $_SESSION['discRate'];}else{echo 0;}; ?>;
+            if(discRate == 0)
+            {
+              document.getElementById("discount").innerHTML = "-";
+            }
+            else{
+              document.getElementById("discount").innerHTML = discRate+"%";
+              var total = <?php echo $total;?>;
+              var remaining = ((100-discRate)/100)*total;
+              document.getElementById("grandtotal").value = "$"+remaining.toFixed(2);
+            }
+        }
+      }
+        
 
         var dt = new Date();
         document.getElementById("date-time").innerHTML=dt.toLocaleString();
     </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
