@@ -2,7 +2,7 @@
 include 'Entity/Manager.php';
 
 class ManagerController{
-    private Manager $m;
+    private  $m;
 
     public function __construct($username) {
         $this->m = new Manager($username);

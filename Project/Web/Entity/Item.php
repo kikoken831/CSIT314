@@ -41,6 +41,14 @@ class Item{
         return $transArr;
     }
 
+    static public function getVisibleItems()
+    {
+        $conn = new mysqli("localhost", "root", "", "restaurant");
+        $sql = "select * from `item` where `visible` = true";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
     public function update($itemName,$category,$price,$vis)
     {
         $sql = "update `item` set `ITEM NAME` = '$itemName', 

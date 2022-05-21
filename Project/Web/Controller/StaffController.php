@@ -1,7 +1,7 @@
 <?php
 include 'Entity/Staff.php';
 class StaffController{
-    private Staff $s;
+    private  $s;
 
     public function __construct($username){
         $this->s= new Staff($username);

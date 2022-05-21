@@ -75,7 +75,8 @@
 				<?php //db pulls
 
 					require_once 'Controller/TransactionController.php';
-					$id = 1; //IMPLEMENT ONCE SESSION IS DONE
+					session_start();
+					$id = $_SESSION['cusID']; //IMPLEMENT ONCE SESSION IS DONE
 					$tc = new TransactionController();
 					$transArr = $tc->getOrderHistory($id);
 					//print_r($transArr); //test array set

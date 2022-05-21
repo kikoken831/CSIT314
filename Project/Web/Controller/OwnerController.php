@@ -1,7 +1,7 @@
 <?php
 require 'Entity/Owner.php';
 class OwnerController{
-    private Owner $o;
+    private  $o;
 
     public function __construct($username) {
         $this->o = new Owner($username);

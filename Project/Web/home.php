@@ -115,8 +115,9 @@
 			$conn = new mysqli($servername, $username, $serverpw, $dbname);
 			if ($conn->connect_error) { die("connection failed"); }
 
-			$sql = "select * from $dbtable where visible = true";
-			$result = $conn->query($sql);
+      require_once 'Controller/ItemController.php';
+      $ic = new ItemController();
+			$result = $ic->getVisibleItems();
 			if ($result->num_rows > 0) 
 			{
 				while ($row=$result->fetch_assoc())
@@ -164,7 +165,7 @@
     <div class="bg-dark p-3">
       <div class="row mx-0 py-3 bg-light rounded-3">
         <div class="">
-          Order #88 <small class="text-muted"><span id='date-time'></small>
+          Order <small class="text-muted"><span id='date-time'></small>
           <button onclick="window.location.href='transactionHistory.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Transaction History</button>
           <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:10%; margin:10px;" type="submit">Log Out</button>
 

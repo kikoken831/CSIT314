@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <body>
     <?php
-        require 'Controller/Ownercontroller.php';
+        require 'Controller/OwnerController.php';
         //db connection initialise
         $servername="localhost";
         $username="root";

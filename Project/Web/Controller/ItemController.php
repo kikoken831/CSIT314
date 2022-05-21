@@ -22,5 +22,10 @@ class ItemController{
         Item::add($itemName,$category,$price);
     }
 
+    public function getVisibleItems()
+    {
+        $result = Item::getVisibleItems();
+        return $result;
+    }
 
 }

@@ -2,7 +2,7 @@
 require 'Entity/Customer.php';
 require_once 'function.php';
 class CustomerController{
-    private Customer $c;
+    private  $c;
 
 
 public function __construct($username){

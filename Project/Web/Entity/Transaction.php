@@ -31,7 +31,7 @@ class Transaction{
     static public function getCompleted()
     {
         $conn = new mysqli("localhost", "root", "", "restaurant");
-        $sql = "select * from transaction where date(datetime) = '2022-05-01' and status = 'COMPLETED'"; //select * from transaction where date(datetime) = date(now())
+        $sql = "select * from transaction where date(datetime) = curdate() and status = 'COMPLETED'"; //select * from transaction where date(datetime) = date(now())
         $result = $conn->query($sql);
         if ($result->num_rows > 0) 
         {
@@ -60,7 +60,7 @@ class Transaction{
     static public function getPending()
     {
         $conn = new mysqli("localhost", "root", "", "restaurant");
-        $sql = "select * from transaction where date(datetime) = '2022-05-01' and status = 'PENDING'"; //select * from transaction where date(datetime) = date(now())
+        $sql = "select * from transaction where status = 'PENDING'"; //select * from transaction where date(datetime) = date(now())
         $result = $conn->query($sql);
         if ($result->num_rows > 0) 
         {
@@ -78,7 +78,7 @@ class Transaction{
     static public function getHistory($id)
     {
         $conn = new mysqli("localhost", "root", "", "restaurant");
-        $sql = "select * from transaction where `customer id` = 1 order by `transaction ID` desc"; 
+        $sql = "select * from transaction where `customer id` = $id order by `transaction ID` desc"; 
         $result = $conn->query($sql);
         {
             while ($row=$result->fetch_assoc())
