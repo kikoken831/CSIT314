@@ -24,14 +24,14 @@
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>7</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>77</x>
-      <y>343</y>
-      <w>203</w>
-      <h>133</h>
+      <x>64</x>
+      <y>392</y>
+      <w>232</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 addCouponCode
@@ -50,10 +50,10 @@ addCouponCode
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>343</x>
-      <y>357</y>
-      <w>203</w>
-      <h>91</h>
+      <x>368</x>
+      <y>408</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 addCouponCodeController
@@ -67,10 +67,10 @@ addCouponCodeController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>602</x>
-      <y>343</y>
-      <w>217</w>
-      <h>133</h>
+      <x>664</x>
+      <y>392</y>
+      <w>248</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Coupon
@@ -88,10 +88,10 @@ Coupon
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>273</x>
-      <y>392</y>
-      <w>84</w>
-      <h>21</h>
+      <x>288</x>
+      <y>448</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
@@ -99,21 +99,21 @@ Coupon
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>539</x>
-      <y>385</y>
-      <w>77</w>
-      <h>28</h>
+      <x>592</x>
+      <y>448</y>
+      <w>88</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>735</y>
-      <w>252</w>
-      <h>98</h>
+      <x>16</x>
+      <y>840</y>
+      <w>288</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 loginInterface
@@ -129,10 +129,10 @@ loginInterface
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>329</x>
-      <y>749</y>
-      <w>245</w>
-      <h>77</h>
+      <x>352</x>
+      <y>856</y>
+      <w>280</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 OwnerController
@@ -146,10 +146,10 @@ OwnerController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
-      <y>742</y>
-      <w>217</w>
-      <h>91</h>
+      <x>664</x>
+      <y>840</y>
+      <w>248</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Owner
@@ -165,32 +165,32 @@ Owner
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>245</x>
-      <y>777</y>
-      <w>98</w>
-      <h>21</h>
+      <x>296</x>
+      <y>888</y>
+      <w>72</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>777</y>
-      <w>63</w>
-      <h>28</h>
+      <x>624</x>
+      <y>888</y>
+      <w>56</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;20.0</additional_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>315</x>
-      <y>931</y>
-      <w>259</w>
-      <h>77</h>
+      <x>304</x>
+      <y>1056</y>
+      <w>296</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 OwnerController
@@ -205,10 +205,10 @@ OwnerController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>917</y>
-      <w>217</w>
-      <h>91</h>
+      <x>696</x>
+      <y>1048</y>
+      <w>248</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Owner
@@ -225,21 +225,21 @@ Owner
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>959</y>
-      <w>77</w>
-      <h>28</h>
+      <x>592</x>
+      <y>1096</y>
+      <w>120</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>357</x>
-      <y>1092</y>
-      <w>203</w>
-      <h>91</h>
+      <x>376</x>
+      <y>1248</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 ItemController
@@ -247,38 +247,36 @@ ItemController
 -Item: Item
 
 --
-+addFoodItem(): long</panel_attributes>
++addItem(ITEM NAME, CATEGORY, PRICE)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>644</x>
-      <y>1078</y>
-      <w>217</w>
-      <h>133</h>
+      <x>688</x>
+      <y>1224</y>
+      <w>248</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Item
 --
--ITEM ID: int
--ITEM NAME: string
--CATEGORY: string
+-ITEM NAME: varchar
+-CATEGORY: varchar
 -PRICE: float
--IMAGEURL: string
+-IMAGEURL: varchar
 -VISIBLE: tinyint
-
 --
-+addFoodItem(): long</panel_attributes>
++addItem(ITEM NAME, CATEGORY, PRICE)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
-      <y>1246</y>
-      <w>203</w>
-      <h>147</h>
+      <x>40</x>
+      <y>1400</y>
+      <w>232</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 updateItem
@@ -287,21 +285,19 @@ updateItem
 -ITEM NAME: string
 -CATEGORY: string
 -PRICE: float
--IMAGEURL: string
 -VISIBLE: tinyint
-
 --
-+updateItem(): long
++updateItem(ITEM ID)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>364</x>
-      <y>1281</y>
-      <w>203</w>
-      <h>91</h>
+      <x>376</x>
+      <y>1424</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 ItemController
@@ -309,64 +305,61 @@ ItemController
 -Item: Item
 
 --
-+updateItem(): long</panel_attributes>
++updateItem(ITEM ID) </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>651</x>
-      <y>1274</y>
-      <w>217</w>
-      <h>140</h>
+      <x>704</x>
+      <y>1400</y>
+      <w>248</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Item
 --
 -ITEM ID: int
--ITEM NAME: string
--CATEGORY: string
+-ITEM NAME: varchar
+-CATEGORY: varchar
 -PRICE: float
--IMAGEURL: string
 -VISIBLE: tinyint
-
 --
-+getItems(): long
-+updateItem(): long</panel_attributes>
++updateItem(ITEM ID)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>273</x>
-      <y>1113</y>
-      <w>98</w>
-      <h>35</h>
+      <x>280</x>
+      <y>1288</y>
+      <w>112</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>1309</y>
-      <w>112</w>
-      <h>28</h>
+      <x>264</x>
+      <y>1472</y>
+      <w>128</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;140.0;20.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>77</x>
-      <y>910</y>
-      <w>217</w>
-      <h>98</h>
+      <x>0</x>
+      <y>1048</y>
+      <w>248</w>
+      <h>112</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
-validateOwner
+    <panel_attributes>&lt;&lt;Boundary&gt;
+LoginInterface
 --
 -username: String
 -password: String
@@ -378,29 +371,32 @@ validateOwner
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>98</x>
-      <y>1505</y>
-      <w>203</w>
-      <h>98</h>
+      <x>80</x>
+      <y>1848</y>
+      <w>232</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 getPending
 --
--listView: ListView
--list: ArrayList&lt;String&gt;
-
+-TRANSACTION ID: int
+-TABLES ID: int
+-CUSTOMER ID: int
+-COUPON ID: int
+-STAFF ID: int
+-STATUS: string
 --
-+onSubmit()
++getPendingList()
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>364</x>
-      <y>1512</y>
-      <w>203</w>
-      <h>91</h>
+      <x>376</x>
+      <y>1856</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 TransactionController
@@ -414,32 +410,30 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>63</x>
-      <y>1078</y>
-      <w>217</w>
-      <h>133</h>
+      <x>40</x>
+      <y>1232</y>
+      <w>248</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-transactionItem
+addItem
 --
--TRANSACTION ID: int
--TABLES ID: int
--CUSTOMER ID: int
--COUPON ID: int
--STAFF ID: int
--STATUS: string
-
+-ITEM NAME: varchar
+-CATEGORY: varchar
+-PRICE: float
+-IMAGEURL: varchar
+-VISIBLE: tinyint
 --
-+allItem()</panel_attributes>
++addItem(ITEM NAME, CATEGORY, PRICE)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>658</x>
-      <y>1484</y>
-      <w>217</w>
-      <h>133</h>
+      <x>664</x>
+      <y>1832</y>
+      <w>248</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Transaction
@@ -450,7 +444,6 @@ Transaction
 -COUPON ID: int
 -STAFF ID: int
 -STATUS: string
-
 --
 +getPendingList()</panel_attributes>
     <additional_attributes/>
@@ -458,17 +451,20 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>98</x>
-      <y>1708</y>
-      <w>203</w>
-      <h>98</h>
+      <x>88</x>
+      <y>2024</y>
+      <w>232</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 getCompleted
 --
--listView: ListView
--list: ArrayList&lt;String&gt;
-
+-TRANSACTION ID: int
+-TABLES ID: int
+-CUSTOMER ID: int
+-COUPON ID: int
+-STAFF ID: int
+-STATUS: string
 --
 +onSubmit()
 +getCompletedList()
@@ -478,10 +474,10 @@ getCompleted
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>1729</y>
-      <w>203</w>
-      <h>91</h>
+      <x>368</x>
+      <y>2032</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 TransactionController
@@ -494,10 +490,10 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>644</x>
-      <y>1694</y>
-      <w>217</w>
-      <h>133</h>
+      <x>664</x>
+      <y>2008</y>
+      <w>248</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Transaction
@@ -508,7 +504,6 @@ Transaction
 -COUPON ID: int
 -STAFF ID: int
 -STATUS: string
-
 --
 +getCompletedList()</panel_attributes>
     <additional_attributes/>
@@ -516,30 +511,10 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>91</x>
-      <y>1911</y>
-      <w>203</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
-getCartItems
---
--listView: ListView
--list: ArrayList&lt;String&gt;
-
---
-+onSubmit()
-+getCartItems()
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>336</x>
-      <y>1925</y>
-      <w>203</w>
-      <h>91</h>
+      <x>400</x>
+      <y>2216</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 TransactionController
@@ -554,20 +529,19 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>637</x>
-      <y>1897</y>
-      <w>217</w>
-      <h>140</h>
+      <x>696</x>
+      <y>2184</y>
+      <w>248</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Transaction
 --
 -TRANSACTION ID: int
 -TABLES ID: int
--CUSTOMER ID: int
--COUPON ID: int
--STAFF ID: int
--STATUS: string
+-QUANTITY: int
+-ITEM NAME: varchar
+-PRICE: float
 
 --
 +getItems(id)
@@ -577,29 +551,33 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>98</x>
-      <y>2058</y>
-      <w>203</w>
-      <h>98</h>
+      <x>96</x>
+      <y>2368</y>
+      <w>232</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 orderHistory
 --
--ITEM ID: int
--ITEM NAME: string
--QUANTITY: int
-
+-CUSTOMER ID: int
+-TRANSACTION ID: int
+-TABLES ID: int
+-COUPON ID: varchar
+-STAFF ID: int
+-STATUS: varchar
+-DATETIME: datetime
+-TOTAL PRICE: decimal 
 --
-+getOrderHistory(id)</panel_attributes>
++getOrderHistory(id): Array[]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>357</x>
-      <y>2079</y>
-      <w>203</w>
-      <h>91</h>
+      <x>400</x>
+      <y>2376</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 TransactionController
@@ -607,55 +585,39 @@ TransactionController
 -Transaction:: getHistory(id)
 
 --
-+getHistory(id)</panel_attributes>
++getOrderHistory(id): Array[]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>637</x>
-      <y>2072</y>
-      <w>217</w>
-      <h>105</h>
+      <x>672</x>
+      <y>2376</y>
+      <w>248</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Transaction
 --
--ITEM ID: int
--ITEM NSME: string
--QUANTITY: int
-
+-CUSTOMER ID: int
+-TRANSACTION ID: int
+-TABLES ID: int
+-COUPON ID: varchar
+-STAFF ID: int
+-STATUS: varchar
+-DATETIME: datetime
+-TOTAL PRICE: decimal 
 --
-+getHistory()</panel_attributes>
++getOrderHistory(id): Array[]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
-      <y>2219</y>
-      <w>203</w>
-      <h>105</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
-updateStatus
---
--ITEM ID: int
--ITEM NAME: string
--QUANTITY: int
-
---
-+setOrder(id)
-+updateStatus()</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>378</x>
-      <y>2226</y>
-      <w>203</w>
-      <h>91</h>
+      <x>384</x>
+      <y>2576</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 TransactionController
@@ -669,18 +631,15 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>637</x>
-      <y>2226</y>
-      <w>217</w>
-      <h>105</h>
+      <x>656</x>
+      <y>2568</y>
+      <w>248</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Transaction
 --
 -ITEM ID: int
--ITEM NAME: string
--QUANTITY: int
-
 --
 +updateStatus(id)</panel_attributes>
     <additional_attributes/>
@@ -688,10 +647,10 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>91</x>
-      <y>2387</y>
-      <w>203</w>
-      <h>105</h>
+      <x>80</x>
+      <y>2728</y>
+      <w>232</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 validateStaff
@@ -707,10 +666,10 @@ validateStaff
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>2394</y>
-      <w>203</w>
-      <h>91</h>
+      <x>376</x>
+      <y>2736</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 StaffController
@@ -725,10 +684,10 @@ StaffController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>623</x>
-      <y>2394</y>
-      <w>217</w>
-      <h>105</h>
+      <x>648</x>
+      <y>2736</y>
+      <w>248</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Staff
@@ -742,10 +701,10 @@ Staff
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
-      <y>2541</y>
-      <w>203</w>
-      <h>105</h>
+      <x>72</x>
+      <y>2904</y>
+      <w>232</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 validateManager
@@ -761,10 +720,10 @@ validateManager
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>315</x>
-      <y>2555</y>
-      <w>245</w>
-      <h>91</h>
+      <x>336</x>
+      <y>2920</y>
+      <w>280</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 ManagerController
@@ -779,10 +738,10 @@ ManagerController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
-      <y>2548</y>
-      <w>217</w>
-      <h>105</h>
+      <x>680</x>
+      <y>2912</y>
+      <w>248</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Manager
@@ -796,21 +755,21 @@ Manager
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>224</y>
-      <w>77</w>
-      <h>28</h>
+      <x>264</x>
+      <y>256</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>182</y>
-      <w>203</w>
-      <h>98</h>
+      <x>40</x>
+      <y>208</y>
+      <w>232</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 removeCouponCode
@@ -824,21 +783,21 @@ removeCouponCode
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>511</x>
-      <y>224</y>
-      <w>91</w>
-      <h>35</h>
+      <x>568</x>
+      <y>256</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>315</x>
-      <y>182</y>
-      <w>203</w>
-      <h>91</h>
+      <x>344</x>
+      <y>208</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 CartController
@@ -852,10 +811,10 @@ CartController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>588</x>
-      <y>196</y>
-      <w>217</w>
-      <h>91</h>
+      <x>648</x>
+      <y>208</y>
+      <w>248</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 cartItem
@@ -870,19 +829,18 @@ cartItem
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>63</x>
+      <x>48</x>
       <y>0</y>
-      <w>161</w>
-      <h>91</h>
+      <w>184</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 addCoupon
 --
-couponCode: Text
-manager name: Text
-Discount Rate: int
-
-
+COUPON CODE: Text
+MANAGER ID: Text
+DISCOUNT RATE: Text
+VALID: tinyint
 --
 +onSubmit()</panel_attributes>
     <additional_attributes/>
@@ -890,72 +848,73 @@ Discount Rate: int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>217</x>
-      <y>35</y>
-      <w>98</w>
-      <h>21</h>
+      <x>224</x>
+      <y>40</y>
+      <w>128</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>497</x>
-      <y>35</y>
-      <w>98</w>
-      <h>21</h>
+      <x>560</x>
+      <y>40</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>301</x>
-      <y>7</y>
-      <w>203</w>
-      <h>91</h>
+      <x>336</x>
+      <y>8</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 CouponController
 --
--Coupon::Coupon
+-Coupon::addCoupons()
 
 --
-+getCoupons(string COUPON CODE): String
++addCoupons(COUPON CODE, MANAGER ID, 
+DISCOUNT RATE, VALID)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>581</x>
+      <x>640</x>
       <y>0</y>
-      <w>217</w>
-      <h>133</h>
+      <w>248</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Coupon
 --
--COUPON ID: int
--COUPON CODE: string
+-COUPON CODE: varchar
 -MANAGER ID: int
 -DISCOUNT RAT: double
 -VALID: tinyint
 
 --
-+getCoupon(string Coupon Code): String
++addCoupons(COUPON CODE, MANAGER ID, 
+DISCOUNT RATE, VALID)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>91</x>
-      <y>532</y>
-      <w>203</w>
-      <h>133</h>
+      <x>80</x>
+      <y>608</y>
+      <w>232</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 updateCoupons
@@ -970,10 +929,10 @@ Coupon:: CouponList()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>343</x>
-      <y>504</y>
-      <w>203</w>
-      <h>168</h>
+      <x>368</x>
+      <y>576</y>
+      <w>232</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
 CouponController
@@ -988,10 +947,10 @@ manager_name, Discount_Rate, valid)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>609</x>
-      <y>525</y>
-      <w>217</w>
-      <h>133</h>
+      <x>672</x>
+      <y>600</y>
+      <w>248</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Coupon
@@ -1005,5 +964,464 @@ Coupon
 +updateCoupons(id, Coupon_Code, 
 manager_name, Discount_Rate, valid)</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>1616</y>
+      <w>232</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+ViewMenu
+--
+
+--
++getItems(): ItemList&lt;array&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>368</x>
+      <y>1648</y>
+      <w>232</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Controller&gt;&gt;
+ItemController
+--
+-Item::getItems()
+
+--
++getItems(): ItemList&lt;array&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>1632</y>
+      <w>248</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Item
+--
+-ITEM ID: int
+-ITEM NAME: string
+-CATEGORY: string
+-PRICE: float
+-IMAGEURL: string
+-VISIBLE: tinyint
+
+--
++getItems(): ItemList</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>1696</y>
+      <w>104</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>1696</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>1088</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>2256</y>
+      <w>104</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>2256</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>2416</y>
+      <w>96</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>2408</y>
+      <w>64</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;60.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>64</x>
+      <y>3072</y>
+      <w>232</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+validateMember
+--
+-username: String
+-password: String
+
+--
+-getUsername(username)
+-getPassword(password)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>352</x>
+      <y>3080</y>
+      <w>280</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Controller&gt;&gt;
+MemberController
+--
+-Member:validateMember(username, password)
+
+--
++getUsername(username)
++getPassword(password)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>3080</y>
+      <w>248</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Member
+--
+-username: String
+-password: String
+--
++validateManager(username,password)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>2568</y>
+      <w>232</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+updateStatus
+--
+-ORDER ID: int
+--
++updateStatus(id)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>3112</y>
+      <w>80</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>3112</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>296</x>
+      <y>2944</y>
+      <w>56</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>2952</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>304</x>
+      <y>2768</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>2768</y>
+      <w>64</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;60.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1456</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>1288</y>
+      <w>96</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>2200</y>
+      <w>232</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+viewCart
+--
+-TRANSACTION ID: int
+--
++onSubmit() :: Button
++getCartItems()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>2616</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>2616</y>
+      <w>64</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>304</x>
+      <y>1896</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>2064</y>
+      <w>72</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1896</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>2072</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>3264</y>
+      <w>232</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+ViewReport
+--
+option: int
+--
+-printData(option)
+-getData(option)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>3256</y>
+      <w>280</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Controller&gt;&gt;
+OwnerController
+--
+Owner::PrintData()
+--
++printData(option)
++getData(option)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>3264</y>
+      <w>248</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Owner
+--
+option: int
+--
++printData(option)
++getData(option)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>304</x>
+      <y>3320</y>
+      <w>56</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>3312</y>
+      <w>80</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>32</x>
+      <y>2832</y>
+      <w>56</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
   </element>
 </diagram>
