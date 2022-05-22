@@ -78,7 +78,13 @@ class Transaction{
     static public function getHistory($id)
     {
         $conn = new mysqli("localhost", "root", "", "restaurant");
-        $sql = "select * from transaction where `customer id` = $id order by `transaction ID` desc"; 
+        if($id == 1){
+            $sql = "select * from transaction where `customer id` = $id order by `transaction ID` desc limit 1"; 
+        }
+        else{
+            $sql = "select * from transaction where `customer id` = $id order by `transaction ID` desc"; 
+        }
+        
         $result = $conn->query($sql);
         {
             while ($row=$result->fetch_assoc())
