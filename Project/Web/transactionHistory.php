@@ -64,6 +64,7 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<span class="navbar-brand mb-0 h1">Makan Club Transactions</span>
+				<a href="javascript:history.back(1)">Back to Menu</a>
 				<button onclick="window.location.href='home.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Back to Home</button>
 				 <!-- <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button> -->
 				 <form method="post"><input type="submit" value="Log Out" name="logout" class="btn btn-outline-danger my-2 my-lg-0" ></form>
