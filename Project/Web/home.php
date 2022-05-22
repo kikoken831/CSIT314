@@ -99,6 +99,12 @@
   input[type=number]{
     width: 50px;
   } 
+
+  .group {
+  display: flex;
+  flex-direction: row;
+
+}
   
 
       </style>
@@ -161,13 +167,22 @@
       }
     }
 
+    if(isset($_POST['logout'])){
+      header("location:login.php");
+      
+      session_destroy();
+    }
+
 		?>
     <div class="bg-dark p-3">
       <div class="row mx-0 py-3 bg-light rounded-3">
         <div class="">
           Order <small class="text-muted"><span id='date-time'></small>
+          <div class="group">
           <button onclick="window.location.href='transactionHistory.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Transaction History</button>
-          <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:10%; margin:10px;" type="submit">Log Out</button>
+          <!-- <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:10%; margin:10px;" type="submit">Log Out</button> -->
+          <form method="post"><input type="submit" value="Log Out" name="logout" class="btn btn-outline-danger my-2 my-lg-0" ></form>
+          </div>
 
           <div class="card mb-3 rounded-3">
             <div class="btn btn-primary container" onclick="activeCartModalHandler()">

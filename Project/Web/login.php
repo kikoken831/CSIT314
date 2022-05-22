@@ -218,7 +218,7 @@
                         $_SESSION['cusID']=$cc->getId();
                         $_SESSION['tableid']=$_POST['tableNum'];
                         ?>
-                        window.location.href = "home.php?cusID="+"<?php echo $_SESSION['cusID']?>"+"&tableNum="+"<?php echo $_POST['tableNum']?>"; //TO PASS in actual CUSTOMER ID into url, currently set to 1
+                        window.location.href = "home.php";
                         </script>
                       <?php
 											}
