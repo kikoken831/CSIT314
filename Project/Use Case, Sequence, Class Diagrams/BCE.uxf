@@ -28,7 +28,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>64</x>
+      <x>344</x>
       <y>392</y>
       <w>232</w>
       <h>152</h>
@@ -50,7 +50,7 @@ addCouponCode
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
+      <x>648</x>
       <y>408</y>
       <w>232</w>
       <h>104</h>
@@ -67,7 +67,7 @@ addCouponCodeController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
+      <x>944</x>
       <y>392</y>
       <w>248</w>
       <h>152</h>
@@ -78,7 +78,7 @@ Coupon
 -COUPON ID: int
 -COUPON CODE: string
 -MANAGER ID: int
--DISCOUNT RAT: double
+-DISCOUNT RATE: double
 -VALID: tinyint
 
 --
@@ -88,7 +88,7 @@ Coupon
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
+      <x>568</x>
       <y>448</y>
       <w>96</w>
       <h>24</h>
@@ -99,7 +99,7 @@ Coupon
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
+      <x>872</x>
       <y>448</y>
       <w>88</w>
       <h>24</h>
@@ -110,7 +110,7 @@ Coupon
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>16</x>
+      <x>296</x>
       <y>840</y>
       <w>288</w>
       <h>112</h>
@@ -129,7 +129,7 @@ loginInterface
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>352</x>
+      <x>632</x>
       <y>856</y>
       <w>280</w>
       <h>88</h>
@@ -146,7 +146,7 @@ OwnerController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
+      <x>944</x>
       <y>840</y>
       <w>248</w>
       <h>104</h>
@@ -165,7 +165,7 @@ Owner
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
+      <x>576</x>
       <y>888</y>
       <w>72</w>
       <h>24</h>
@@ -176,7 +176,7 @@ Owner
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
+      <x>904</x>
       <y>888</y>
       <w>56</w>
       <h>24</h>
@@ -187,7 +187,7 @@ Owner
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>304</x>
+      <x>584</x>
       <y>1056</y>
       <w>296</w>
       <h>88</h>
@@ -205,7 +205,7 @@ OwnerController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
+      <x>976</x>
       <y>1048</y>
       <w>248</w>
       <h>104</h>
@@ -225,7 +225,7 @@ Owner
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
+      <x>872</x>
       <y>1096</y>
       <w>120</w>
       <h>24</h>
@@ -236,7 +236,7 @@ Owner
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>376</x>
+      <x>656</x>
       <y>1248</y>
       <w>232</w>
       <h>104</h>
@@ -253,7 +253,7 @@ ItemController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>688</x>
+      <x>968</x>
       <y>1224</y>
       <w>248</w>
       <h>136</h>
@@ -273,7 +273,7 @@ Item
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
+      <x>320</x>
       <y>1400</y>
       <w>232</w>
       <h>168</h>
@@ -294,7 +294,7 @@ updateItem
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>376</x>
+      <x>656</x>
       <y>1424</y>
       <w>232</w>
       <h>104</h>
@@ -311,7 +311,7 @@ ItemController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
+      <x>984</x>
       <y>1400</y>
       <w>248</w>
       <h>160</h>
@@ -331,7 +331,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
+      <x>560</x>
       <y>1288</y>
       <w>112</w>
       <h>24</h>
@@ -342,7 +342,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>264</x>
+      <x>544</x>
       <y>1472</y>
       <w>128</w>
       <h>24</h>
@@ -353,7 +353,7 @@ Item
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>280</x>
       <y>1048</y>
       <w>248</w>
       <h>112</h>
@@ -371,7 +371,7 @@ LoginInterface
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>360</x>
       <y>1848</y>
       <w>232</w>
       <h>112</h>
@@ -393,7 +393,7 @@ getPending
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>376</x>
+      <x>656</x>
       <y>1856</y>
       <w>232</w>
       <h>104</h>
@@ -410,7 +410,7 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
+      <x>320</x>
       <y>1232</y>
       <w>248</w>
       <h>128</h>
@@ -430,7 +430,7 @@ addItem
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
+      <x>944</x>
       <y>1832</y>
       <w>248</w>
       <h>152</h>
@@ -451,7 +451,7 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>88</x>
+      <x>368</x>
       <y>2024</y>
       <w>232</w>
       <h>112</h>
@@ -474,7 +474,7 @@ getCompleted
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
+      <x>648</x>
       <y>2032</y>
       <w>232</w>
       <h>104</h>
@@ -490,7 +490,7 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
+      <x>944</x>
       <y>2008</y>
       <w>248</w>
       <h>152</h>
@@ -511,7 +511,7 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
+      <x>680</x>
       <y>2216</y>
       <w>232</w>
       <h>104</h>
@@ -529,7 +529,7 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
+      <x>976</x>
       <y>2184</y>
       <w>248</w>
       <h>160</h>
@@ -551,7 +551,7 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
+      <x>376</x>
       <y>2368</y>
       <w>232</w>
       <h>160</h>
@@ -574,7 +574,7 @@ orderHistory
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
+      <x>680</x>
       <y>2376</y>
       <w>232</w>
       <h>104</h>
@@ -591,7 +591,7 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>672</x>
+      <x>952</x>
       <y>2376</y>
       <w>248</w>
       <h>160</h>
@@ -614,7 +614,7 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>384</x>
+      <x>664</x>
       <y>2576</y>
       <w>232</w>
       <h>104</h>
@@ -631,7 +631,7 @@ TransactionController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>656</x>
+      <x>936</x>
       <y>2568</y>
       <w>248</w>
       <h>120</h>
@@ -647,7 +647,7 @@ Transaction
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>360</x>
       <y>2728</y>
       <w>232</w>
       <h>120</h>
@@ -666,7 +666,7 @@ validateStaff
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>376</x>
+      <x>656</x>
       <y>2736</y>
       <w>232</w>
       <h>104</h>
@@ -684,7 +684,7 @@ StaffController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
+      <x>928</x>
       <y>2736</y>
       <w>248</w>
       <h>120</h>
@@ -701,7 +701,7 @@ Staff
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
+      <x>352</x>
       <y>2904</y>
       <w>232</w>
       <h>120</h>
@@ -720,7 +720,7 @@ validateManager
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
+      <x>616</x>
       <y>2920</y>
       <w>280</w>
       <h>104</h>
@@ -738,7 +738,7 @@ ManagerController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
+      <x>960</x>
       <y>2912</y>
       <w>248</w>
       <h>120</h>
@@ -755,7 +755,7 @@ Manager
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>264</x>
+      <x>544</x>
       <y>256</y>
       <w>96</w>
       <h>24</h>
@@ -766,7 +766,7 @@ Manager
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
+      <x>320</x>
       <y>208</y>
       <w>232</w>
       <h>112</h>
@@ -783,7 +783,7 @@ removeCouponCode
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
+      <x>848</x>
       <y>256</y>
       <w>96</w>
       <h>24</h>
@@ -794,7 +794,7 @@ removeCouponCode
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>344</x>
+      <x>624</x>
       <y>208</y>
       <w>232</w>
       <h>104</h>
@@ -811,7 +811,7 @@ CartController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
+      <x>928</x>
       <y>208</y>
       <w>248</w>
       <h>104</h>
@@ -829,7 +829,7 @@ cartItem
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>48</x>
+      <x>328</x>
       <y>0</y>
       <w>184</w>
       <h>128</h>
@@ -848,7 +848,7 @@ VALID: tinyint
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
+      <x>504</x>
       <y>40</y>
       <w>128</w>
       <h>24</h>
@@ -859,7 +859,7 @@ VALID: tinyint
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
+      <x>840</x>
       <y>40</y>
       <w>96</w>
       <h>24</h>
@@ -870,7 +870,7 @@ VALID: tinyint
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
+      <x>616</x>
       <y>8</y>
       <w>232</w>
       <h>104</h>
@@ -889,7 +889,7 @@ DISCOUNT RATE, VALID)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
+      <x>920</x>
       <y>0</y>
       <w>248</w>
       <h>152</h>
@@ -911,7 +911,7 @@ DISCOUNT RATE, VALID)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>360</x>
       <y>608</y>
       <w>232</w>
       <h>152</h>
@@ -929,7 +929,7 @@ Coupon:: CouponList()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
+      <x>648</x>
       <y>576</y>
       <w>232</w>
       <h>192</h>
@@ -947,7 +947,7 @@ manager_name, Discount_Rate, valid)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>672</x>
+      <x>952</x>
       <y>600</y>
       <w>248</w>
       <h>152</h>
@@ -968,7 +968,7 @@ manager_name, Discount_Rate, valid)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
+      <x>336</x>
       <y>1616</y>
       <w>232</w>
       <h>168</h>
@@ -978,14 +978,14 @@ ViewMenu
 --
 
 --
-+getItems(): ItemList&lt;array&gt;
++getVisibleItems(visible): ItemList&lt;array&gt;
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
+      <x>648</x>
       <y>1648</y>
       <w>232</w>
       <h>104</h>
@@ -996,13 +996,13 @@ ItemController
 -Item::getItems()
 
 --
-+getItems(): ItemList&lt;array&gt;</panel_attributes>
++getVisiblwItems(visible): ItemList&lt;array&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
+      <x>944</x>
       <y>1632</y>
       <w>248</w>
       <h>160</h>
@@ -1018,13 +1018,13 @@ Item
 -VISIBLE: tinyint
 
 --
-+getItems(): ItemList</panel_attributes>
++getVisibleItems(visible): ItemList&lt;array&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
+      <x>560</x>
       <y>1696</y>
       <w>104</w>
       <h>24</h>
@@ -1035,7 +1035,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
+      <x>872</x>
       <y>1696</y>
       <w>88</w>
       <h>24</h>
@@ -1046,7 +1046,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
+      <x>520</x>
       <y>1088</y>
       <w>80</w>
       <h>24</h>
@@ -1057,7 +1057,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
+      <x>592</x>
       <y>2256</y>
       <w>104</w>
       <h>24</h>
@@ -1068,7 +1068,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
+      <x>904</x>
       <y>2256</y>
       <w>88</w>
       <h>24</h>
@@ -1079,7 +1079,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
+      <x>600</x>
       <y>2416</y>
       <w>96</w>
       <h>24</h>
@@ -1090,7 +1090,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
+      <x>904</x>
       <y>2408</y>
       <w>64</w>
       <h>32</h>
@@ -1101,7 +1101,7 @@ Item
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>64</x>
+      <x>344</x>
       <y>3072</y>
       <w>232</w>
       <h>120</h>
@@ -1120,7 +1120,7 @@ validateMember
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>352</x>
+      <x>632</x>
       <y>3080</y>
       <w>280</w>
       <h>104</h>
@@ -1138,7 +1138,7 @@ MemberController
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
+      <x>976</x>
       <y>3080</y>
       <w>248</w>
       <h>120</h>
@@ -1155,7 +1155,7 @@ Member
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>88</x>
+      <x>368</x>
       <y>2568</y>
       <w>232</w>
       <h>112</h>
@@ -1171,7 +1171,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
+      <x>568</x>
       <y>3112</y>
       <w>80</w>
       <h>32</h>
@@ -1182,7 +1182,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
+      <x>904</x>
       <y>3112</y>
       <w>88</w>
       <h>32</h>
@@ -1193,7 +1193,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
+      <x>576</x>
       <y>2944</y>
       <w>56</w>
       <h>32</h>
@@ -1204,7 +1204,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
+      <x>888</x>
       <y>2952</y>
       <w>88</w>
       <h>32</h>
@@ -1215,7 +1215,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>304</x>
+      <x>584</x>
       <y>2768</y>
       <w>88</w>
       <h>32</h>
@@ -1226,7 +1226,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
+      <x>880</x>
       <y>2768</y>
       <w>64</w>
       <h>32</h>
@@ -1237,7 +1237,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
+      <x>880</x>
       <y>1456</y>
       <w>120</w>
       <h>24</h>
@@ -1248,7 +1248,7 @@ updateStatus
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
+      <x>888</x>
       <y>1288</y>
       <w>96</w>
       <h>24</h>
@@ -1259,7 +1259,7 @@ updateStatus
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>88</x>
+      <x>368</x>
       <y>2200</y>
       <w>232</w>
       <h>112</h>
@@ -1277,7 +1277,7 @@ viewCart
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
+      <x>592</x>
       <y>2616</y>
       <w>88</w>
       <h>24</h>
@@ -1288,7 +1288,7 @@ viewCart
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>608</x>
+      <x>888</x>
       <y>2616</y>
       <w>64</w>
       <h>24</h>
@@ -1299,7 +1299,7 @@ viewCart
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>304</x>
+      <x>584</x>
       <y>1896</y>
       <w>88</w>
       <h>24</h>
@@ -1310,7 +1310,7 @@ viewCart
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
+      <x>592</x>
       <y>2064</y>
       <w>72</w>
       <h>24</h>
@@ -1321,7 +1321,7 @@ viewCart
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
+      <x>880</x>
       <y>1896</y>
       <w>80</w>
       <h>24</h>
@@ -1332,7 +1332,7 @@ viewCart
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
+      <x>872</x>
       <y>2072</y>
       <w>88</w>
       <h>24</h>
@@ -1343,7 +1343,7 @@ viewCart
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>360</x>
       <y>3264</y>
       <w>232</w>
       <h>120</h>
@@ -1360,7 +1360,7 @@ option: int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>344</x>
+      <x>624</x>
       <y>3256</y>
       <w>280</w>
       <h>136</h>
@@ -1377,7 +1377,7 @@ Owner::PrintData()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
+      <x>960</x>
       <y>3264</y>
       <w>248</w>
       <h>120</h>
@@ -1394,7 +1394,7 @@ option: int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>304</x>
+      <x>584</x>
       <y>3320</y>
       <w>56</w>
       <h>32</h>
@@ -1405,7 +1405,7 @@ option: int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>616</x>
+      <x>896</x>
       <y>3312</y>
       <w>80</w>
       <h>32</h>
@@ -1416,7 +1416,7 @@ option: int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>32</x>
+      <x>312</x>
       <y>2832</y>
       <w>56</w>
       <h>32</h>
