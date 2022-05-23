@@ -263,10 +263,13 @@
 								}
 						}
             if ( isset ($_POST["guest"])) //check if guest button is clicked
-            {?>
+            {
+              $_SESSION['cusID']=1;
+              $_SESSION['tableid']=$_POST['tableNum'];
+              ?>
               <script type="text/javascript">
                 alert("Successfully logged in as Guest. Redirecting to MakanClub menu page");
-                window.location.href = "home.php?cusID=1&tableNum="+"<?php echo $_POST['tableNum']?>";
+                window.location.href = "home.php";
               </script>
               <?php
             }
