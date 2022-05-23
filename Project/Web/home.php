@@ -6,9 +6,11 @@
     if(isset($_SESSION['cart'][$id])){
       $previous=$_SESSION['cart'][$id]['qty'];
       $_SESSION['cart'][$id] = array("pid"=>$id, "qty"=>$previous+$_POST['quantity']);
+      header("location:home.php");
     }
     else{
       $_SESSION['cart'][$id] = array("pid"=>$id, "qty"=>$_POST['quantity']);
+      header("location:home.php");
     }
 
   }
@@ -179,7 +181,7 @@
         <div class="">
           Order <small class="text-muted"><span id='date-time'></small>
           <div class="group">
-          <button onclick="window.location.href='transactionHistory.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:20%; margin:10px;" type="submit">Transaction History</button>
+          <button onclick="window.location.href='transactionHistory.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width: 10%; margin:10px;" type="submit">Transaction History</button>
           <!-- <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:10%; margin:10px;" type="submit">Log Out</button> -->
           <form method="post"><input type="submit" value="Log Out" name="logout" class="btn btn-outline-danger my-2 my-lg-0" ></form>
           </div>
