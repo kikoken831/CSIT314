@@ -40,6 +40,9 @@ class Transaction{
                     $transArr[] = array('transaction id' => $row["TRANSACTION ID"],'table id' => $row["TABLES ID"], 'customer id' => $row["CUSTOMER ID"], 'coupon id' => $row["COUPON ID"], 'staff id' => $row["STAFF ID"], 'status' => $row["STATUS"], 'datetime' => $row["DATETIME"], 'total price' => $row["TOTAL PRICE"]);
                 }
         }
+        else{
+            return null;
+        }
         return $transArr;
     }
 
