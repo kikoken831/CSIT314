@@ -110,7 +110,7 @@
 				<span class="navbar-brand mb-0 h1">Makan Club Manage Orders</span>
 				<a href = "manageOrders.php?menu=active" style="padding:10px; border-radius: 10px; background-color:black; color:white; text-decoration:none; margin: 5px;">Active Orders</a>
 				<a href = "manageOrders.php?menu=complete" style="padding:10px; border-radius: 10px; background-color:black; color:white; text-decoration:none; margin: 5px;">Completed Orders</a>
-				<button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button>
+				<button onclick="window.location.href='loginS.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button>
 			</div>
 		</nav>
 		<!-- Main Body -->

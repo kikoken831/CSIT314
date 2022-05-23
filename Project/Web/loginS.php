@@ -222,12 +222,7 @@
 						?>
 
 				</div>
-				<div class="fieldgroup">
-					<p>
-            <a href="forgotpassword.php"></br>Forget Password</a>
-						<!-- <a href="register.php"></br>Not registered? Click here to register</a> -->
-					</p>
-				</div>
+
 			</form>
       <script>
       function validateRegistrationForm(){

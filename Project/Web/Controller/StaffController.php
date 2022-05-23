@@ -5,7 +5,7 @@ class StaffController{
 
     public function __construct($username){
         $this->s= new Staff($username);
-        var_dump($this->s);
+        //var_dump($this->s);
     }
 
     public function validateStaff($username,$password) : bool
