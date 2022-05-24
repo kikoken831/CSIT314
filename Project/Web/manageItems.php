@@ -65,7 +65,7 @@
             margin: 5px;
           ">Manage Coupon Codes</a>
           
-            <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0"
+            <button onclick="window.location.href='loginM.php'" class="btn btn-outline-danger my-2 my-lg-0"
                 type="submit">
                 Log Out
             </button>

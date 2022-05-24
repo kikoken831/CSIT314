@@ -27,7 +27,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container">
             <span class="navbar-brand mb-0 h1" style="text-align=center">Owner's Dashboard</span>
-            <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button>
+            <button onclick="window.location.href='loginO.php'" class="btn btn-outline-danger my-2 my-lg-0" type="submit">Log Out</button>
         </div>
 	</nav>
     <!-- get top 3 -->
