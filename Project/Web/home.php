@@ -95,7 +95,7 @@
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 0.3rem;
     outline: 0;
-    width: 120%;
+    overflow: scroll;
   }
 
   input[type=number]{
@@ -333,7 +333,7 @@
 
                         foreach($query as $a){
                           echo "<tr>
-                            <td><img src='".$a["IMAGEURL"]."' width=\"100\" height=\"100\"/></td>
+                            <td><img src='".$a["IMAGEURL"]."' width=\"80\" height=\"80\"/></td>
                             <td>".$a["ITEM NAME"]."</td>
                             <td>$".$a["PRICE"]."</td>
                             <td><form action='home.php' method='POST'><input type='number' size='2' min='1' maxlength='2' name='quantity' value='$product_qty' />
