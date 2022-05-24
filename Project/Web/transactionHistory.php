@@ -10,6 +10,7 @@
 	</head>
 	<body>
 		<script type="text/javascript">
+			
 			// On click handler for active orders button
 			function activeOrderModalHandler(orderID) {
 				// Gets the data of the current element
@@ -46,16 +47,16 @@
                 let count = 1
                 for(const key in foodDict){
                     const row = document.createElement("tr");
-                    let rowSum = parseInt(foodDict[key]["price"]) * parseInt(foodDict[key]["qty"])
+                    let rowSum = foodDict[key]["price"] * parseInt(foodDict[key]["qty"])
                     row.innerHTML += `<td>${count++}</td>`
                     row.innerHTML += `<td>${key}</td>`
                     row.innerHTML += `<td>${foodDict[key]["qty"]}</td>`
                     row.innerHTML += `<td>${foodDict[key]["price"]}</td>`
-                    row.innerHTML += `<td>${rowSum.toFixed(2)}</td>`
+                    row.innerHTML += `<td>${rowSum}</td>`
                     document.getElementById('modal-foodItems').appendChild(row)
                     sum += rowSum
                 }                    
-                document.getElementById('modal-total').innerHTML = "$" + sum.toFixed(2)
+                document.getElementById('modal-total').innerHTML = "$" + sum
                 
 				// Opens Modal 
 				$('#exampleModalCenter').modal('show')

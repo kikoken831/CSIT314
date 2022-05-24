@@ -76,7 +76,7 @@
                 let count = 1
                 for(const key in foodDict){
                     const row = document.createElement("tr");
-                    let rowSum = parseInt(foodDict[key]["price"]) * parseInt(foodDict[key]["qty"])
+                    let rowSum = foodDict[key]["price"] * parseInt(foodDict[key]["qty"])
                     row.innerHTML += `<td>${count++}</td>`
                     row.innerHTML += `<td>${key}</td>`
                     row.innerHTML += `<td>${foodDict[key]["qty"]}</td>`
