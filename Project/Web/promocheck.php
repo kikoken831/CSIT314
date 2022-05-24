@@ -34,6 +34,8 @@ if(isSet($_POST['coupon']))
 	}
 	else
 	{
+		unset($_SESSION['discRate']);
+		unset($_SESSION['couponid']);
 		die('Invalid promo code.');
 	}
 }

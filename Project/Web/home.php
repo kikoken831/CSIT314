@@ -181,7 +181,7 @@
         <div class="">
           Order <small class="text-muted"><span id='date-time'></small>
           <div class="group">
-          <button onclick="window.location.href='transactionHistory.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width: 10%; margin:10px;" type="submit">Transaction History</button>
+          <button onclick="window.location.href='transactionHistory.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width: 32%; margin:10px;" type="submit">Transaction History</button>
           <!-- <button onclick="window.location.href='login.php'" class="btn btn-outline-danger my-2 my-lg-0" style="width:10%; margin:10px;" type="submit">Log Out</button> -->
           <form method="post"><input type="submit" value="Log Out" name="logout" class="btn btn-outline-danger my-2 my-lg-0" ></form>
           </div>
@@ -462,7 +462,14 @@
          <?php
              if (isset ($_POST["order"])){
 
-                $couponid = $_SESSION['couponid'];        
+                if(isset($_SESSION['discRate']))
+                {
+                  $couponid = $_SESSION['couponid'];  
+                }
+                else{
+                  $couponid = NULL;
+                }
+                      
                 $tableid = $_SESSION['tableid'];
                 $customerid = $_SESSION['cusID'];
 
