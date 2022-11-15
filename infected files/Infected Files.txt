@@ -1,0 +1,8 @@
+HEX|tiny_filemanager|XXXX|15/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/wp-config-samples.php
+STR|php_generic_uploader_418|XXXX|15/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/wp-includes/blocks/comment-reply-link/spacing.php
+GEN|eval_base64decode|XXXX|15/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/wp-head.php
+STR|php_generic_uploader_418|XXXX|15/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/wp-includes/SimplePie/HTTP/dimensione.php
+GEN|muchy_webshell|XXXX|14/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/wp-content/plugins/wp-file-manager/lib/themes/dark/images/icons-smlzp.png
+STR|php_generic_uploader_418|XXXX|15/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/wp-includes/sodium_compat/inddex.php
+GEN|eval_base64decode|XXXX|15/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/index.php
+STR|php_generic_uploader_418|XXXX|15/11/22|/home/u2181-lwshurbvuz9v/www/boltworks.digital/public_html/wp-content/themes/twentytwentyone/assets/sass/01-settings/theme.php
